@@ -1,0 +1,19 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    padding: 2rem;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
