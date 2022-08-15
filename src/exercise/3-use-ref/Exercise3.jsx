@@ -1,17 +1,6 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const useDebounce = (callback, time) => {
-  const debouce = useRef(null);
-
-  const onDebouce = (...args) => {
-    clearTimeout(debouce.current);
-    debouce.current = setTimeout(() => {
-      callback(...args);
-    }, time);
-  };
-
-  return onDebouce;
-};
+const useDebounce = (callback, time) => {};
 
 const fetchAgeByName = (name) => {
   return fetch(`https://api.agify.io/?name=${name}`).then((res) => res.json());
@@ -20,11 +9,11 @@ const fetchAgeByName = (name) => {
 const App = () => {
   const [result, setResult] = useState(null);
 
-  const onSearch = useDebounce((value) => {
+  const onSearch = (value) => {
     fetchAgeByName(value).then((data) => {
       setResult(data);
     });
-  }, 500);
+  };
 
   return (
     <div>

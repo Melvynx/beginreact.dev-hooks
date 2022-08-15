@@ -1,38 +1,50 @@
-import { useRef } from 'react';
+import { useRef, useState } from "react";
 
-const UserForm = ({ onSubmitUser }) => {
-  const usernameRef = useRef();
-  const passwordRef = useRef();
+const useDebounce = (callback, time) => {
+  const debounce = useRef(null);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const username = usernameRef.current.value;
-    const password = passwordRef.current.value;
-
-    onSubmitUser({ username, password });
+  const onDebounce = (...args) => {
+    clearTimeout(debounce.current);
+    debounce.current = setTimeout(() => {
+      callback(...args);
+    }, time);
   };
 
+  return onDebounce;
+};
+
+const fetchAgeByName = (name) => {
+  return fetch(`https://api.agify.io/?name=${name}`).then((res) => res.json());
+};
+
+const App = () => {
+  const [result, setResult] = useState(null);
+  const inputRef = useRef(null);
+
+  const onSearch = useDebounce(() => {
+    fetchAgeByName(inputRef.current.value).then((data) => {
+      setResult(data);
+    });
+  }, 500);
+
   return (
-    <form className="vertical-stack" onSubmit={handleSubmit}>
-      <label htmlFor="name">
-        Name
-        <input ref={usernameRef} id="name" type="text" name="name" />
-      </label>
-      <label htmlFor="password">
-        Password
-        <input ref={passwordRef} id="password" type="password" name="password" />
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
+    <div>
+      <input
+        type="text"
+        placeholder="Search bar"
+        ref={inputRef}
+        onChange={() => {
+          onSearch();
+        }}
+      />
+      {result ? (
+        <div style={{ padding: 16 }}>
+          The age for <b>{result.name}</b> is <b>{result.age}</b> and there is{" "}
+          <b>{result.count}</b> people with this name.
+        </div>
+      ) : null}
+    </div>
   );
 };
 
-const Form = () => {
-  const onSubmitUser = (data) => {
-    alert('Form submitted: ' + JSON.stringify(data));
-  };
-  return <UserForm onSubmitUser={onSubmitUser} />;
-};
-
-export default Form;
+export default App;

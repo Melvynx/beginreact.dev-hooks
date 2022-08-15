@@ -1,56 +1,64 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
-const UserForm = ({ onSubmitUser }) => {
-  const [error, setError] = useState(null);
+const useDebounce = (callback, time) => {
+  const debounce = useRef(null);
 
-  const usernameRef = useRef();
-  const passwordRef = useRef();
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const username = usernameRef.current.value;
-    const password = passwordRef.current.value;
-
-    if (password.length < 8) {
-      setError('Password must be at least 8 characters long');
-      return;
-    }
-
-    onSubmitUser({ username, password });
+  const onDebounce = (...args) => {
+    clearTimeout(debounce.current);
+    debounce.current = setTimeout(() => {
+      callback(...args);
+    }, time);
   };
 
-  const handlePasswordChange = () => {
-    setError(null);
-  };
+  return onDebounce;
+};
+
+const useRenderCount = () => {
+  const renderCount = useRef(0);
+
+  useEffect(() => {
+    renderCount.current += 1;
+  });
+
+  return renderCount;
+};
+
+const fetchAgeByName = (name) => {
+  return fetch(`https://api.agify.io/?name=${name}`).then((res) => res.json());
+};
+
+const App = () => {
+  const [result, setResult] = useState(null);
+  const inputRef = useRef(null);
+  const renderCount = useRenderCount();
+
+  const onSearch = useDebounce(() => {
+    fetchAgeByName(inputRef.current.value).then((data) => {
+      setResult(data);
+    });
+  }, 500);
 
   return (
-    <form className="vertical-stack" onSubmit={handleSubmit}>
-      <label htmlFor="name">
-        Name
-        <input ref={usernameRef} id="name" type="text" name="name" />
-      </label>
-      <label htmlFor="password">
-        Password
-        <input
-          ref={passwordRef}
-          onChange={handlePasswordChange}
-          id="password"
-          type="password"
-          name="password"
-        />
-      </label>
-      {error && <p style={{ color: '#e74c3c' }}>{error}</p>}
-      <input type="submit" value="Submit" />
-    </form>
+    <div>
+      <input
+        type="text"
+        placeholder="Search bar"
+        ref={inputRef}
+        onChange={() => {
+          onSearch();
+        }}
+      />
+      {result ? (
+        <div style={{ padding: 16 }}>
+          The age for <b>{result.name}</b> is <b>{result.age}</b> and there is{" "}
+          <b>{result.count}</b> people with this name.
+        </div>
+      ) : null}
+      <div style={{ background: "red", padding: 16 }}>
+        The component render ${renderCount.current} times
+      </div>
+    </div>
   );
 };
 
-const Form = () => {
-  const onSubmitUser = (data) => {
-    alert('Form submitted: ' + JSON.stringify(data));
-  };
-  return <UserForm onSubmitUser={onSubmitUser} />;
-};
-
-export default Form;
+export default App;
