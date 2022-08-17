@@ -1,80 +1,68 @@
-# Formulaire
+# useRef
 
-Les applications web sont majoritairement construites à partir de formulaires.
-
-Il y a plusieurs moyen de gérer les formulaires en React.
-
-Nous allons en voir 4.
-
-## Exercise 1 - Basic
-
-Nous allons récupérer les données de notre formulaire en utilisant l'API basique du
-browser avec `onSubmit`.
-
-On récupère l'event puis on va chercher les données qui nous intéressent dans l'event.
-
-💡 Rajoutent des IDs à vos inputs pour que tu puisses les récupérer plus simplement
-ainsi que le `htmlFor` des labels.
-
-## Exercise 2 - useRef
-
-Nous allons utiliser `useRef` pour récupérer les données de notre formulaire.
-
-Oui nous n'avons pas encore vue `useRef`, mais c'est une intro sur le terrain.
-
-Pour comprendre tu peux lire [la doc de React](https://beta.reactjs.org/apis/useref#manipulating-the-dom-with-a-ref).
-
-💡 Tu peux nommer `usernameRef` et `passwordRef` les refs.
-💡 Tu peux récupérer les données de `usernameRef` et `passwordRef` dans la fonction `handleSubmit`.
-
-## Exercise 3 - Validate
-
-Si tu as un champs que tu souhaite faire validé, tu peux utiliser un `state` pour le faire.
-
-Tu rajoute un state `passwordError` (📖 [useState](https://beta.reactjs.org/apis/usestate#usage)).
-
-Dans le onSubmit, tu vérifie que la longueur du password est de minimum 8 characters,
-si c'est pas le cas tu peux changer `passwordError` en `"Password must be at least 8 characters long"`.
-
-Ensuite afficher en rouge le message d'erreur sous le champs password.
-
-En plus, lors que l'user écrit dans le champs password, tu supprime le message d'erreur. (📖 [React event](https://reactjs.org/docs/handling-events.html))
-
-## Exercise 4 - Controlled Input
-
-Voici le dernier moyen de gérer les formulaires en React, c'est un `controlled input`.
-
-C'est quand tu définie une `value` à ton input. Dans ce cas tu dois gérer entièrement la valuer
-de l'input. Donc quand il change, tu dois écouter le `onChange` event et update
-la valeur de l'input en fonction.
-
+Nous avons déjà vue les useRef dans le cas des formulaires. C'était pour récupérer 
+la valeur d'un input afin de pouvoir le submit.
 ```jsx
-const Input = () => {
-  const [value, setValue] = useState(value);
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-
-  return <input type="text" value={value} onChange={onChange} />;
-};
+const Component = () => {
+  const inputRef = useRef();
+  
+  return <input ref={inputRef} id="example" />;
+}
 ```
 
-**Remplace le useRef par un state et change les inputs en `controlled input``**
-Attention il ne faut pas oublié de réinitialisé l'erreur dans le onChange du password.
-Et il faut laissé la gestion de l'erreur dans le onSubmit.
+Quand tu fais ça, tu viens simplement récupérer la référence **dans le DOM** de l'élément.
+Ici la valeur d'`input.current` c'est comme si tu faisais `document.querySelector("#example")`.
 
-## Exercise 5 - react-use-form-hook
+[📖 useRef - Récupérer un élément du DOM](https://beta.reactjs.org/apis/useref#manipulating-the-dom-with-a-ref)
 
-Maintenant on va **tout** remplacer par un `useForm` hook.
+Mais `useRef` a une deuxième utilité : pour [référencer des valeurs](https://beta.reactjs.org/apis/useref#referencing-a-value-with-a-ref) 
+qui sont mémoriser entre les renders.
 
-Utilise [react-hooks-form](https://react-hook-form.com/get-started) pour refaire
-le formulaire ci-dessus. (avec la validation du password)
+C'est ce cas qu'on va voir dans cette exercise.
 
-Les form sont tellement présent sur le web qu'il est souvent conseillé d'utilisé
-une library pour gérer leur states et leur erreurs.
+## Exercise
 
-Je t'en explique plus dans la vidéo solution.
+Nous avons une petite application qui quand tu rentre ton prénom, te dit "l'âge de ton prénom".
 
-⚠️ Si c'est compliqué, ne reste pas bloquer et vas regarder les vidéos de réponse ou
-les fichiers solutions.
+Pour ce faire on va utiliser une API qui se nomme [agify](https://agify.io/).
+Je te laisse check la documentation. Notre application à une input, et on veut
+que notre application affiche l'âge du prénom mis dans l'input. Comme si c'était
+une search bar -> pas de button submit.
+
+Tu écris -> on fetch -> on affiche la réponse. 
+
+Le problème c'est qu'on ne veut pas fetch 10000x l'api. On veut le faire **quand tu as finis d'écrire**.
+Mais comment savoir quand tu as finis d'écrire ?
+
+On va dire qu'à partir du moment ou tu n'écris plus depuis **500ms**, c'est que
+tu as terminer d'écrire. A ce moment, on va fetch la nouvelle données.
+
+Donc le hook `useDebouce` va prendre deux paramètres, la `callback` function 
+ainsi que `time` en milisecondes.
+
+Il va retourne une fonction qu’on va nommé `onDebouce`. Les consignes sont dans l'exercise.
+
+💌Tu comprends comment stoquer des valeurs qui n'influe pas le render dans des useRef
+
+## Exercise 2
+
+Dans un but pédagogique, ajoute une `ref` nommé `inputRef` afin de récupérer
+la valeur de l'input.
+
+Remplace la logique de `value` dans notre fonction `onSearch` en utilisant
+la valeur stoqué dans la `ref` `inputRef`. 
+
+💌Tu comprends que la ref permet aussi de référencer une DOM.
+
+## Exercise 3
+
+En utilisant ce qu'on a appris avec les render dans l'exercise sur les `useEffect`,
+crée un hooks `useRenderCount` pour calculé le nombre de render qu'on fait subir
+à notre composant.
+
+💡`useRef` doit être utilisé pour compter le nombre de render. Tu peux ensuite
+afficher `ref.current` dans la vue pour voir le nombre de render.
+
+💡Google est ton amis.
+
+💌Tu comprends l'aventage qu'à une référence dans les render.

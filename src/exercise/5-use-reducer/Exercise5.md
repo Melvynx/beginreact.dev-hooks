@@ -1,80 +1,105 @@
-# Formulaire
+# use reducer
 
-Les applications web sont majoritairement construites à partir de formulaires.
+Voici un hooks totalement sous-coté.
 
-Il y a plusieurs moyen de gérer les formulaires en React.
+Dans cette exercise on va utiliser **toutes la puissance**. Il faut savoir que quand
+j'ai appris React c'est celui qui ma pausé le plus problème. Je vais essayé
+de rendre son concept le plus simple possible.
 
-Nous allons en voir 4.
+[📖 Doc de useReducer](https://beta.reactjs.org/apis/usereducer)
 
-## Exercise 1 - Basic
+![react hooks flow](../../assets/use-reduce-flow.png)
 
-Nous allons récupérer les données de notre formulaire en utilisant l'API basique du
-browser avec `onSubmit`.
+_J'explique ce flow dans la vidéo d'intro._
 
-On récupère l'event puis on va chercher les données qui nous intéressent dans l'event.
+> C'est quoi la différence avec useState ?
 
-💡 Rajoutent des IDs à vos inputs pour que tu puisses les récupérer plus simplement
-ainsi que le `htmlFor` des labels.
+Enfaite useState est une version limité de useReducer, regarde :
 
-## Exercise 2 - useRef
+(en acceptant que `initalValue` ne soit pas une fonction)
+```js
+const reducer = (prevValue, newValue) => {
+  // On peut aussi passé une fonction dans le `setState`
+  if (typeof newValue === "function") {
+    return newValue(prevValue);
+  }
+  return newValue;
+}
 
-Nous allons utiliser `useRef` pour récupérer les données de notre formulaire.
-
-Oui nous n'avons pas encore vue `useRef`, mais c'est une intro sur le terrain.
-
-Pour comprendre tu peux lire [la doc de React](https://beta.reactjs.org/apis/useref#manipulating-the-dom-with-a-ref).
-
-💡 Tu peux nommer `usernameRef` et `passwordRef` les refs.
-💡 Tu peux récupérer les données de `usernameRef` et `passwordRef` dans la fonction `handleSubmit`.
-
-## Exercise 3 - Validate
-
-Si tu as un champs que tu souhaite faire validé, tu peux utiliser un `state` pour le faire.
-
-Tu rajoute un state `passwordError` (📖 [useState](https://beta.reactjs.org/apis/usestate#usage)).
-
-Dans le onSubmit, tu vérifie que la longueur du password est de minimum 8 characters,
-si c'est pas le cas tu peux changer `passwordError` en `"Password must be at least 8 characters long"`.
-
-Ensuite afficher en rouge le message d'erreur sous le champs password.
-
-En plus, lors que l'user écrit dans le champs password, tu supprime le message d'erreur. (📖 [React event](https://reactjs.org/docs/handling-events.html))
-
-## Exercise 4 - Controlled Input
-
-Voici le dernier moyen de gérer les formulaires en React, c'est un `controlled input`.
-
-C'est quand tu définie une `value` à ton input. Dans ce cas tu dois gérer entièrement la valuer
-de l'input. Donc quand il change, tu dois écouter le `onChange` event et update
-la valeur de l'input en fonction.
-
-```jsx
-const Input = () => {
-  const [value, setValue] = useState(value);
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-
-  return <input type="text" value={value} onChange={onChange} />;
-};
+const useState = (initalValue) => {
+  const [state, setState] = React.useReducer(reducer, initalValue);
+  return [state, setState]
+}
 ```
 
-**Remplace le useRef par un state et change les inputs en `controlled input``**
-Attention il ne faut pas oublié de réinitialisé l'erreur dans le onChange du password.
-Et il faut laissé la gestion de l'erreur dans le onSubmit.
+Donc finalement ce reduce est une sorte de `super useState` pour
+réaliser tout tes rêves et tes désirs.
 
-## Exercise 5 - react-use-form-hook
+## Exercise 1
 
-Maintenant on va **tout** remplacer par un `useForm` hook.
+Nous avons un counter qui ne fonctionne pas pour l'instant, fait
+le fonctionner.
+Quand tu clique sur le compteur, il doit s'incrémenter de 1.
 
-Utilise [react-hooks-form](https://react-hook-form.com/get-started) pour refaire
-le formulaire ci-dessus. (avec la validation du password)
+💌 Tu apprends l'usage le plus basique du `useReducer`.
 
-Les form sont tellement présent sur le web qu'il est souvent conseillé d'utilisé
-une library pour gérer leur states et leur erreurs.
+## Exercise 2 - Bouton moins !
 
-Je t'en explique plus dans la vidéo solution.
+Maintenant ajoute un deuxième button : le button moins !
 
-⚠️ Si c'est compliqué, ne reste pas bloquer et vas regarder les vidéos de réponse ou
-les fichiers solutions.
+Quand tu clique dessus, il doit décrémenter de 1.
+
+🦁 Tu vas devoir modifier la fonction `reducer` pour qu'elle
+s'adapte à l'action qui est passé en paramètre.
+💡
+```js
+switch(action) {
+  case "increment":
+    // ...
+  case "decrement":
+    // ... 
+  default:
+    // ...
+}
+```
+
+## Exercise 3 - Refactor et reset
+
+Pour cette exercise 3 choses :
+
+1. Ajoute un button `reset` avec une nouvelle action : `reset` qui reset le compteur à 0.
+2. Crée une constantes qui contient chaque Action (`increment`, `decrement`, `reset`) et utilise ces constantes aulieu de string
+
+💡
+```js
+const Actions = {
+  INCREMENT: "increment",
+}
+```
+
+💌 Tu apprends à ajouté des actions qui ne se base par sur la valeur du state.
+💌 Tu apprends à refactor ton code pour éviter des problèmes.
+
+PS : TypeScript résoue bien mieux se problème.
+
+## Exercise 4 - De 5 en 5 !
+
+Ajoute deux nouveaux boutons :
+- `+5` qui increment de **5**
+- `-5` qui decrement de **5**
+
+Pour ça il ne faut pas rajoutés de nouvelles actions, mais plutôt ajouté
+une paramètre à notre action.
+
+💡
+```js
+const reducer = (value, {action, value}) => {/*...*/}
+```
+
+💌 Tu apprends à ajouter 1 paramètre dans l'action.
+
+## Bonus
+
+Tu veux aller encore plus loins ?
+
+Tu peux rajouter un input pour `set` la value, avec une action set.

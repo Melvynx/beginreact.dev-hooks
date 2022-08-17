@@ -54,7 +54,7 @@ const App = () => {
           <b>{result.count}</b> people with this name.
         </div>
       ) : null}
-      <div style={{ background: "red", padding: 16 }}>
+      <div style={{ color: "red", padding: 16 }}>
         The component render ${renderCount.current} times
       </div>
     </div>

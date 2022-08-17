@@ -7,6 +7,67 @@ const users = [
   { username: "User", password: "User", isAdmin: false },
 ];
 
+// User
+const UserContext = createContext({ user: null });
+const UserManagerContext = createContext({});
+
+const useUserContext = () => {
+  const context = useContext(UserContext);
+  if (context === undefined) {
+    throw new Error("useUserContext must be used within a UserContextProvider");
+  }
+  return context;
+};
+
+const useUserManagerContext = () => {
+  const context = useContext(UserManagerContext);
+  if (context === undefined) {
+    throw new Error(
+      "useUpdateUserContext must be used within a UpdateUserContextProvider"
+    );
+  }
+  return context;
+};
+
+const UserContextProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+
+  const onSubmit = (username, password) => {
+    const user = users.find(
+      (u) => u.username === username && u.password === password
+    );
+    if (user) {
+      setUser(user);
+    } else {
+      alert("Invalid username or password");
+    }
+  };
+
+  const onLogout = () => {
+    setUser(null);
+  };
+
+  return (
+    <UserContext.Provider value={{ user }}>
+      <UserManagerContext.Provider value={{ onLogout, onSubmit }}>
+        {children}
+      </UserManagerContext.Provider>
+    </UserContext.Provider>
+  );
+};
+
+const App = () => {
+  return (
+    <UserContextProvider>
+      <div className={styles.app}>
+        <NavBar />
+        <User />
+        <Article />
+      </div>
+    </UserContextProvider>
+  );
+};
+
 // Components
 const NavBar = () => {
   const { user } = useUserContext();
@@ -82,67 +143,6 @@ const ArticleAction = () => {
 const User = () => {
   const { user } = useUserContext();
   return user ? <UserView /> : <UserForm />;
-};
-
-// User
-const UserContext = createContext({ user: null });
-const UserManagerContext = createContext({});
-
-const useUserContext = () => {
-  const context = useContext(UserContext);
-  if (context === undefined) {
-    throw new Error("useUserContext must be used within a UserContextProvider");
-  }
-  return context;
-};
-
-const useUserManagerContext = () => {
-  const context = useContext(UserManagerContext);
-  if (context === undefined) {
-    throw new Error(
-      "useUpdateUserContext must be used within a UpdateUserContextProvider"
-    );
-  }
-  return context;
-};
-
-const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-
-  const onSubmit = (username, password) => {
-    const user = users.find(
-      (u) => u.username === username && u.password === password
-    );
-    if (user) {
-      setUser(user);
-    } else {
-      alert("Invalid username or password");
-    }
-  };
-
-  const onLogout = () => {
-    setUser(null);
-  };
-
-  return (
-    <UserContext.Provider value={{ user }}>
-      <UserManagerContext.Provider value={{ onLogout, onSubmit }}>
-        {children}
-      </UserManagerContext.Provider>
-    </UserContext.Provider>
-  );
-};
-
-const App = () => {
-  return (
-    <UserContextProvider>
-      <div className={styles.app}>
-        <NavBar />
-        <User />
-        <Article />
-      </div>
-    </UserContextProvider>
-  );
 };
 
 export default App;

@@ -49,6 +49,11 @@ body {
   min-height: 100vh;
 }
 
+body,
+html {
+  height: 100%;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -92,8 +97,8 @@ input:focus-visible {
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+  height: 100%;
 }
 
 .nav-list {
@@ -112,4 +117,17 @@ input:focus-visible {
   font-size: 1.5em;
   margin: 16px 0;
   text-decoration: underline;
+}
+
+.exercise {
+  display: flex;
+  margin-top: 16px;
+}
+
+.prose {
+  text-align: left;
+}
+
+.useOnRenderStyle {
+  transition: background-color 0.25s;
 }

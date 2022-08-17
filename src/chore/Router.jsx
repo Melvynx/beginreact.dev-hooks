@@ -4,10 +4,10 @@
  * This file is created to make the exercises friendly. Any update can break the exercises.
  */
 
-import React from 'react';
-import { Navigate, Route, Routes } from 'react-router';
-import { Link } from 'react-router-dom';
-import { EXERCISES } from './exercises';
+import React from "react";
+import { Navigate, Route, Routes } from "react-router";
+import { Link } from "react-router-dom";
+import { EXERCISES } from "./exercises";
 
 export const Router = () => {
   return (
@@ -18,13 +18,29 @@ export const Router = () => {
           <Route
             key={exercise.name}
             path={`/${exercise.name}`}
-            element={<Exercise data={exercise} />}
+            element={<ExerciseRoutes data={exercise} />}
           />
-          <Route
-            key={exercise.name}
-            path={`/${exercise.name}/exercise`}
-            element={exercise.parts.exercise}
-          />
+
+          {exercise.parts.exercise ? (
+            <Route
+              key={exercise.name}
+              path={`/${exercise.name}/exercise`}
+              element={
+                <Exercise markdownElement={exercise.parts.md}>
+                  {exercise.parts.exercise}
+                </Exercise>
+              }
+            />
+          ) : (
+            exercise.parts.exercises.map((exercisePart, i) => (
+              <Route
+                key={`${exercise.name}-${i}`}
+                path={`/${exercise.name}/exercise/${i + 1}`}
+                element={exercisePart}
+              />
+            ))
+          )}
+
           {exercise.parts.solutions.map((solution, i) => (
             <Route
               key={`${exercise.name}-${i}`}
@@ -43,20 +59,41 @@ export const Router = () => {
   );
 };
 
-const Exercise = ({ data }) => {
+const ExerciseRoutes = ({ data }) => {
   return (
     <div>
       <h1>{data.name}</h1>
       <div className="nav-list">
-        <Link className="router-exercise" to={`/${data.name}/exercise`}>
-          Exercise
-        </Link>
+        {data.parts.exercise ? (
+          <Link className="router-exercise" to={`/${data.name}/exercise`}>
+            Exercise
+          </Link>
+        ) : (
+          data.parts.exercises.map((exercisePart, i) => (
+            <Link
+              className="router-exercise"
+              key={i}
+              to={`/${data.name}/exercise/${i + 1}`}
+            >
+              Exercise {i + 1}
+            </Link>
+          ))
+        )}
         {data.parts.solutions.map((_, i) => (
           <Link key={i} to={`/${data.name}/solution/${i + 1}`}>
             Solution {i + 1}
           </Link>
         ))}
       </div>
+    </div>
+  );
+};
+
+const Exercise = ({ markdownElement, children }) => {
+  return (
+    <div className="exercise">
+      <div className="prose">{markdownElement}</div>
+      {children}
     </div>
   );
 };
@@ -75,8 +112,8 @@ const Home = () => {
       <p>
         Les liens te permettent de te repérer dans les exercises.
         <br />
-        Si tu es perdu ou tu as des problèmes, rejoins le discord et n'hésite pas à
-        demander de l'aide.
+        Si tu es perdu ou tu as des problèmes, rejoins le discord et n'hésite
+        pas à demander de l'aide.
       </p>
     </div>
   );

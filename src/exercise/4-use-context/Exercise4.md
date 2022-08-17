@@ -1,80 +1,61 @@
-# Formulaire
+# useContext
 
-Les applications web sont majoritairement construites à partir de formulaires.
+Ohhhhhhhh ! J'ai décider de te faire un exercise **un peu complexe** et **complet** ici !
+Tu vas faire du refactor, j'ai déjà tout préparer et il va falloir refactor tout ce bordel
+en utilisant `useContext`.
 
-Il y a plusieurs moyen de gérer les formulaires en React.
+Mais déjà c'est quoi `useContext`. Il permet de partager de la logique (valeur, function) 
+entre plusieurs composants sans avoir à passer des props.
 
-Nous allons en voir 4.
+Enfaite ce hooks répond à cette question : 
 
-## Exercise 1 - Basic
+> Comment passer une props à un enfant qui est très loins dans le DOM ?
 
-Nous allons récupérer les données de notre formulaire en utilisant l'API basique du
-browser avec `onSubmit`.
+[📖 useContext - Récupérer des données du contexte](https://beta.reactjs.org/apis/usecontext#passing-data-deeply-into-the-tree)
 
-On récupère l'event puis on va chercher les données qui nous intéressent dans l'event.
+On va jeter un coup d'oeil à la doc ensemble, mais le meilleur moyen de comprendre reste la pratique.
 
-💡 Rajoutent des IDs à vos inputs pour que tu puisses les récupérer plus simplement
-ainsi que le `htmlFor` des labels.
+## Exercise 1 - Refactor
 
-## Exercise 2 - useRef
+J'ai fais une petite page très simple, avec `currentUser` stocké dans le contexte. Si tu vas voir
+l'application pour l'instant elle utilise des props.
 
-Nous allons utiliser `useRef` pour récupérer les données de notre formulaire.
+Ton but est **de supprimer toutes les props** et les remplacés par le context.
 
-Oui nous n'avons pas encore vue `useRef`, mais c'est une intro sur le terrain.
+Les instructions sont dans l'exercise.
 
-Pour comprendre tu peux lire [la doc de React](https://beta.reactjs.org/apis/useref#manipulating-the-dom-with-a-ref).
+💌Tu apprends à utiliser les contexts pour éviter le "props drilling"
 
-💡 Tu peux nommer `usernameRef` et `passwordRef` les refs.
-💡 Tu peux récupérer les données de `usernameRef` et `passwordRef` dans la fonction `handleSubmit`.
+## Exercise 2 - Split
 
-## Exercise 3 - Validate
+Maintenant dans le fichier `App` on a toute la logique métier (le `user`).
 
-Si tu as un champs que tu souhaite faire validé, tu peux utiliser un `state` pour le faire.
+Mais je souhaite séparé mon `App` et mon `UserContext`.
 
-Tu rajoute un state `passwordError` (📖 [useState](https://beta.reactjs.org/apis/usestate#usage)).
+Pour ça crée un composant `UserContextProvider` et déplace le `currentUser`, le `logout`,
+le `onSubmit`
 
-Dans le onSubmit, tu vérifie que la longueur du password est de minimum 8 characters,
-si c'est pas le cas tu peux changer `passwordError` en `"Password must be at least 8 characters long"`.
+Tu risque d'avoir des problèmes, car on utilise `currentUser` dans l'app.
+Essai de trouver la solution et si tu n'y arrive pas il y a le corriger.
 
-Ensuite afficher en rouge le message d'erreur sous le champs password.
+💌Tu apprends à séparer ton code afin de séparer la Vue et la Logique.
 
-En plus, lors que l'user écrit dans le champs password, tu supprime le message d'erreur. (📖 [React event](https://reactjs.org/docs/handling-events.html))
+## Exercise 3 - Création d'un nouveau context
 
-## Exercise 4 - Controlled Input
+Notre client c'est rendu compte que le composant du `Logout` était rerender
+quand le user change alors qu'il **n'a pas besoin du user** pour fonctionné.
 
-Voici le dernier moyen de gérer les formulaires en React, c'est un `controlled input`.
+Tu vas donc crée un deuxième context `UserManagerContext` que tu vas utiliser
+dans le composant `UserContextProvider`.
 
-C'est quand tu définie une `value` à ton input. Dans ce cas tu dois gérer entièrement la valuer
-de l'input. Donc quand il change, tu dois écouter le `onChange` event et update
-la valeur de l'input en fonction.
+`UserManagerContext` va posséder `logout` et `submit`.
+`UserContext` va posséder `currentUser` uniquement.
 
-```jsx
-const Input = () => {
-  const [value, setValue] = useState(value);
+## Exercise 4 - Utilisation de `context-selector`
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+Dans cette formation tu as un aventage déloyale : tu apprends et
+comprends l'utilisation de certaine library. Cette fois c'est [use-context-selector](https://www.npmjs.com/package/use-context-selector).
 
-  return <input type="text" value={value} onChange={onChange} />;
-};
-```
-
-**Remplace le useRef par un state et change les inputs en `controlled input``**
-Attention il ne faut pas oublié de réinitialisé l'erreur dans le onChange du password.
-Et il faut laissé la gestion de l'erreur dans le onSubmit.
-
-## Exercise 5 - react-use-form-hook
-
-Maintenant on va **tout** remplacer par un `useForm` hook.
-
-Utilise [react-hooks-form](https://react-hook-form.com/get-started) pour refaire
-le formulaire ci-dessus. (avec la validation du password)
-
-Les form sont tellement présent sur le web qu'il est souvent conseillé d'utilisé
-une library pour gérer leur states et leur erreurs.
-
-Je t'en explique plus dans la vidéo solution.
-
-⚠️ Si c'est compliqué, ne reste pas bloquer et vas regarder les vidéos de réponse ou
-les fichiers solutions.
+Pourquoi je choisis cette library ? Car c'est la plus proche du hooks
+`useContext`. Cette formation est niveau débutant donc il n'y a pas besoin
+d'apprendre `Redux` ou `Zustand` maintenant.
