@@ -1,12 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useRef,
-  useState,
-} from "react";
-import { useOnRenderStyle } from "../toolbox/hooks/useOnRenderStyle.jsx";
+import { useState } from "react";
 import { ExpensiveComponent } from "../toolbox/components/ExpensiveComponent.jsx";
 
 const SmallComponentTop = () => {

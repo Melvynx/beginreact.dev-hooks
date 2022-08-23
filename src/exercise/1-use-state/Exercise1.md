@@ -78,3 +78,64 @@ Quand tu clique sur un historique, tu va supprimé celui ci de la liste.
 ```
 
 Il te faut rajouter la fonction `deleteHistory`.
+
+---
+
+## Exercise 5 - Ou mettre les states ?
+
+(Tu dois aller dans le fichier `Exercise1-2.jsx`, ce n'est pas la suite
+de ce qu'on a fait jusqu'ici.)
+
+En React un des skill le plus important, c'est de savoir ou mettre les
+states, et c'est une énorme source d'erreur.
+
+Je t'explique le context, je viens de crée l'application la plus
+mal foutu possible.
+
+Ton but : la réparer.
+
+1 er problème : Dans la section "Animal" quand on change le "Favorite
+animal" rien ne change dans le text en dessous. Met le state
+au bonne endroit pour réparer ça et crée un composant pour la partie
+animal.
+
+## Exercise 6 - Refactor... Again
+
+Deux concepts à comprendre :
+
+- Les données vont de en haut à en bas !
+- Les states doivent être le plus proche possible de leur utilisation
+
+Quand tu vois la todo list, c'est vraiment pas optimal. Elle rerender
+toute notre app à chaque nouvelle todo.
+
+Ton objectif est de crée un nouveau composant "Todo" avec le state `todos`
+à l'intérieur ainsi que tout les composant qui sont lié aux `Todos`.
+
+Pourquoi ?
+
+Car ce state n'est ni utiliser par notre "UserAnimalForm" ni par
+notre "Counter".
+
+Donc il n'a pas ça plaçe ici.
+
+## Exercise 7 - Refactor... Again
+
+Même chose pour Counter.
+
+Tu peux simplement déplacer le state `count` dans le composant "Counter".
+
+Voici à quoi devrait ressembler le composant App :
+
+```jsx
+const App = () => {
+  return (
+    <div>
+      <Todo />
+      <h2>Counter</h2>
+      <Counter />
+      <UserAnimalForm />
+    </div>
+  );
+};
+```

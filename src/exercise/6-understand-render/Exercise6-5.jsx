@@ -1,15 +1,5 @@
-import {
-  createContext,
-  memo,
-  useContext,
-  useEffect,
-  useMemo,
-  useReducer,
-  useRef,
-  useState,
-} from "react";
+import { createContext, memo, useContext, useReducer, useState } from "react";
 import { useOnRenderStyle } from "../../toolbox/hooks/useOnRenderStyle.jsx";
-import { ExpensiveComponent } from "../../toolbox/components/ExpensiveComponent.jsx";
 
 const Header = () => {
   const ref = useOnRenderStyle();

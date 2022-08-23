@@ -4,7 +4,8 @@
  */
 
 // Exercises
-import UseState from "../exercise/1-use-state/Exercise1";
+import UseState1 from "../exercise/1-use-state/Exercise1-1.jsx";
+import UseState5 from "../exercise/1-use-state/Exercise1-5.jsx";
 import UseEffect from "../exercise/2-use-effect/Exercise2";
 import UseRef from "../exercise/3-use-ref/Exercise3";
 import UseContext from "../exercise/4-use-context/Exercise4";
@@ -24,6 +25,7 @@ import Solution1Exercise1 from "../final/1-1";
 import Solution1Exercise2 from "../final/1-2";
 import Solution1Exercise3 from "../final/1-3";
 import Solution1Exercise4 from "../final/1-4";
+import Solution1Exercise5 from "../final/1-5";
 // Exercise 2
 import Solution2Exercise1 from "../final/2-1";
 import Solution2Exercise2 from "../final/2-2";
@@ -51,13 +53,14 @@ export const EXERCISES = [
   {
     name: "1-use-state",
     parts: {
-      exercise: <UseState />,
+      exercises: [<UseState1 key={1} />, <UseState5 key={2} />],
       md: <UseStateMarkdown />,
       solutions: [
         <Solution1Exercise1 key={1} />,
         <Solution1Exercise2 key={2} />,
         <Solution1Exercise3 key={3} />,
         <Solution1Exercise4 key={4} />,
+        <Solution1Exercise5 key={5} />,
       ],
     },
   },
