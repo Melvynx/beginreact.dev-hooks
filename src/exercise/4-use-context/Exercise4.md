@@ -4,10 +4,10 @@ Ohhhhhhhh ! J'ai décider de te faire un exercise **un peu complexe** et **compl
 Tu vas faire du refactor, j'ai déjà tout préparer et il va falloir refactor tout ce bordel
 en utilisant `useContext`.
 
-Mais déjà c'est quoi `useContext`. Il permet de partager de la logique (valeur, function) 
+Mais déjà c'est quoi `useContext`. Il permet de partager de la logique (valeur, function)
 entre plusieurs composants sans avoir à passer des props.
 
-Enfaite ce hooks répond à cette question : 
+Enfaite ce hooks répond à cette question :
 
 > Comment passer une props à un enfant qui est très loins dans le DOM ?
 

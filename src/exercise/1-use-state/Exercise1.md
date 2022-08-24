@@ -29,6 +29,8 @@ Ajoute un state pour que l'application te dise bonjour avec ton nom en temps ré
 
 Instructions dans le fichier.
 
+- 💌 Tu comprend comment basiquement crée un state.
+
 ## Exercise 2 - Ajout d'un nouveau state
 
 Ajoute un checkbox qui quand elle est activé va afficher le prénom **inversé**.
@@ -39,8 +41,8 @@ Ajoute un checkbox qui quand elle est activé va afficher le prénom **inversé*
 Attention, il te faut rajouter un nouveau state.
 Et a aucun moment il faut inversé la valeur du state `name`.
 
-💌 Tu apprends ici à gérer un affichage d'état en fonction d'autre état.
-💌 Tu apprends aussi à gérer un boolean en fonction de sa valeur précédente.
+- 💌 Tu apprends ici à gérer un affichage d'état en fonction d'autre état.
+- 💌 Tu apprends aussi à gérer un boolean en fonction de sa valeur précédente.
 
 ## Exercise 3 - Stocker chaque changement de notre state
 
@@ -60,7 +62,7 @@ et qu'un nom peut revenir deux fois.
 
 💡 Il ne faut pas utiliser `nameHistory.push`. [📖 blog post](https://bobbyhadz.com/blog/react-push-to-state-array)
 
-- 💌 Tu apprends ici à ajouté dans une liste.
+- 💌 Tu apprends à ajouté dans une liste.
 - 💌 Tu comprendras le lifecycle des hooks avec un bug expliqué.
 
 ## Exercise 4 - Supprimer des name history
@@ -78,6 +80,8 @@ Quand tu clique sur un historique, tu va supprimé celui ci de la liste.
 ```
 
 Il te faut rajouter la fonction `deleteHistory`.
+
+- 💌 Tu apprends à supprimé dans une liste.
 
 ---
 
@@ -99,6 +103,8 @@ animal" rien ne change dans le text en dessous. Met le state
 au bonne endroit pour réparer ça et crée un composant pour la partie
 animal.
 
+- 💌 Tu comprend comme utiliser `useState` dans une application.
+
 ## Exercise 6 - Refactor... Again
 
 Deux concepts à comprendre :
@@ -118,6 +124,9 @@ Car ce state n'est ni utiliser par notre "UserAnimalForm" ni par
 notre "Counter".
 
 Donc il n'a pas ça plaçe ici.
+
+- 💌 Tu comprends qu'il faut repartir les states aux plus proche de leur
+  usage dans des petits composant.
 
 ## Exercise 7 - Refactor... Again
 

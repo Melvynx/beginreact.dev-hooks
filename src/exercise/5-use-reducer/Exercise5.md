@@ -8,7 +8,7 @@ de rendre son concept le plus simple possible.
 
 [📖 Doc de useReducer](https://beta.reactjs.org/apis/usereducer)
 
-![react hooks flow](../../assets/use-reduce-flow.png)
+![react hooks flow](../../../public/assets/use-reduce-flow.png)
 
 _J'explique ce flow dans la vidéo d'intro._
 
@@ -17,6 +17,7 @@ _J'explique ce flow dans la vidéo d'intro._
 Enfaite useState est une version limité de useReducer, regarde :
 
 (en acceptant que `initalValue` ne soit pas une fonction)
+
 ```js
 const reducer = (prevValue, newValue) => {
   // On peut aussi passé une fonction dans le `setState`
@@ -24,12 +25,12 @@ const reducer = (prevValue, newValue) => {
     return newValue(prevValue);
   }
   return newValue;
-}
+};
 
 const useState = (initalValue) => {
   const [state, setState] = React.useReducer(reducer, initalValue);
-  return [state, setState]
-}
+  return [state, setState];
+};
 ```
 
 Donc finalement ce reduce est une sorte de `super useState` pour
@@ -52,14 +53,15 @@ Quand tu clique dessus, il doit décrémenter de 1.
 🦁 Tu vas devoir modifier la fonction `reducer` pour qu'elle
 s'adapte à l'action qui est passé en paramètre.
 💡
+
 ```js
-switch(action) {
+switch (action) {
   case "increment":
-    // ...
+  // ...
   case "decrement":
-    // ... 
+  // ...
   default:
-    // ...
+  // ...
 }
 ```
 
@@ -71,10 +73,11 @@ Pour cette exercise 3 choses :
 2. Crée une constantes qui contient chaque Action (`increment`, `decrement`, `reset`) et utilise ces constantes aulieu de string
 
 💡
+
 ```js
 const Actions = {
   INCREMENT: "increment",
-}
+};
 ```
 
 💌 Tu apprends à ajouté des actions qui ne se base par sur la valeur du state.
@@ -85,6 +88,7 @@ PS : TypeScript résoue bien mieux se problème.
 ## Exercise 4 - De 5 en 5 !
 
 Ajoute deux nouveaux boutons :
+
 - `+5` qui increment de **5**
 - `-5` qui decrement de **5**
 
@@ -92,8 +96,11 @@ Pour ça il ne faut pas rajoutés de nouvelles actions, mais plutôt ajouté
 une paramètre à notre action.
 
 💡
+
 ```js
-const reducer = (value, {action, value}) => {/*...*/}
+const reducer = (value, { action, value }) => {
+  /*...*/
+};
 ```
 
 💌 Tu apprends à ajouter 1 paramètre dans l'action.

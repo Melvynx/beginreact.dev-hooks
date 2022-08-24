@@ -8,6 +8,7 @@ import React from "react";
 import { Navigate, Route, Routes } from "react-router";
 import { Link } from "react-router-dom";
 import { EXERCISES } from "./exercises";
+import { ExerciseProse } from "./ExerciseProse.jsx";
 
 export const Router = () => {
   return (
@@ -26,9 +27,9 @@ export const Router = () => {
               key={exercise.name}
               path={`/${exercise.name}/exercise`}
               element={
-                <Exercise markdownElement={exercise.parts.md}>
+                <ExerciseProse markdownElement={exercise.parts.md}>
                   {exercise.parts.exercise}
-                </Exercise>
+                </ExerciseProse>
               }
             />
           ) : (
@@ -36,7 +37,11 @@ export const Router = () => {
               <Route
                 key={`${exercise.name}-${i}`}
                 path={`/${exercise.name}/exercise/${i + 1}`}
-                element={exercisePart}
+                element={
+                  <ExerciseProse markdownElement={exercise.parts.md}>
+                    {exercisePart}
+                  </ExerciseProse>
+                }
               />
             ))
           )}
@@ -85,15 +90,6 @@ const ExerciseRoutes = ({ data }) => {
           </Link>
         ))}
       </div>
-    </div>
-  );
-};
-
-const Exercise = ({ markdownElement, children }) => {
-  return (
-    <div className="exercise">
-      <div className="prose">{markdownElement}</div>
-      {children}
     </div>
   );
 };

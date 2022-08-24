@@ -1,13 +1,14 @@
 # useRef
 
-Nous avons déjà vue les useRef dans le cas des formulaires. C'était pour récupérer 
+Nous avons déjà vue les useRef dans le cas des formulaires. C'était pour récupérer
 la valeur d'un input afin de pouvoir le submit.
+
 ```jsx
 const Component = () => {
   const inputRef = useRef();
-  
+
   return <input ref={inputRef} id="example" />;
-}
+};
 ```
 
 Quand tu fais ça, tu viens simplement récupérer la référence **dans le DOM** de l'élément.
@@ -15,7 +16,7 @@ Ici la valeur d'`input.current` c'est comme si tu faisais `document.querySelecto
 
 [📖 useRef - Récupérer un élément du DOM](https://beta.reactjs.org/apis/useref#manipulating-the-dom-with-a-ref)
 
-Mais `useRef` a une deuxième utilité : pour [référencer des valeurs](https://beta.reactjs.org/apis/useref#referencing-a-value-with-a-ref) 
+Mais `useRef` a une deuxième utilité : pour [référencer des valeurs](https://beta.reactjs.org/apis/useref#referencing-a-value-with-a-ref)
 qui sont mémoriser entre les renders.
 
 C'est ce cas qu'on va voir dans cette exercise.
@@ -29,7 +30,7 @@ Je te laisse check la documentation. Notre application à une input, et on veut
 que notre application affiche l'âge du prénom mis dans l'input. Comme si c'était
 une search bar -> pas de button submit.
 
-Tu écris -> on fetch -> on affiche la réponse. 
+Tu écris -> on fetch -> on affiche la réponse.
 
 Le problème c'est qu'on ne veut pas fetch 10000x l'api. On veut le faire **quand tu as finis d'écrire**.
 Mais comment savoir quand tu as finis d'écrire ?
@@ -37,7 +38,7 @@ Mais comment savoir quand tu as finis d'écrire ?
 On va dire qu'à partir du moment ou tu n'écris plus depuis **500ms**, c'est que
 tu as terminer d'écrire. A ce moment, on va fetch la nouvelle données.
 
-Donc le hook `useDebouce` va prendre deux paramètres, la `callback` function 
+Donc le hook `useDebouce` va prendre deux paramètres, la `callback` function
 ainsi que `time` en milisecondes.
 
 Il va retourne une fonction qu’on va nommé `onDebouce`. Les consignes sont dans l'exercise.
@@ -50,7 +51,7 @@ Dans un but pédagogique, ajoute une `ref` nommé `inputRef` afin de récupérer
 la valeur de l'input.
 
 Remplace la logique de `value` dans notre fonction `onSearch` en utilisant
-la valeur stoqué dans la `ref` `inputRef`. 
+la valeur stoqué dans la `ref` `inputRef`.
 
 💌Tu comprends que la ref permet aussi de référencer une DOM.
 

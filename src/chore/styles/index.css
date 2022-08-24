@@ -118,16 +118,3 @@ input:focus-visible {
   margin: 16px 0;
   text-decoration: underline;
 }
-
-.exercise {
-  display: flex;
-  margin-top: 16px;
-}
-
-.prose {
-  text-align: left;
-}
-
-.useOnRenderStyle {
-  transition: background-color 0.25s;
-}

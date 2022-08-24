@@ -8,7 +8,7 @@ Mais c'est quoi le life-cycle ?
 
 Voici un graph pour le comprendre :
 
-![react hooks flow](../../assets/react-hooks-flow.png)
+<img src="../../../public/assets/react-hooks-flow.png" alt="react hooks flow" />
 
 Dans la vidéo Intro, je t'explique en détail ce graphique.
 
@@ -32,7 +32,7 @@ Pour update des states basée sur un autre state tu n'as pas besoin d'avoir de u
 Dans le composant `Hello`, on veut que le `name` soit garder dans le `localStorage`
 afin de ne pas le perdre quand on recharge la page.
 
-Pour ça écoute 🦁.
+Pour ça écoute 🦁 dans le fichier Exercise.
 
 ## Exercise 2 - Optimisation
 
@@ -47,7 +47,7 @@ la valeur par défaut.
 En plus il c'est rendu compte que quand on clique sur le Counter, le `useEffect`
 est appelé. Il faut que tu ajoute des dépendances à notre `useEffect`.
 
-## Exercise 3 - Refactor
+## Exercise 3 - Refactor
 
 Déplace toute la logique qui concerne le state et le localStorage dans un custom hooks.
 
@@ -85,7 +85,7 @@ useEffect(() => {
   const handleResize = () => {
     // ...
   };
-  window.addEventListener('resize', handleResize);
+  window.addEventListener("resize", handleResize);
   return () => {
     // clean up function
   };
