@@ -20,7 +20,7 @@
 }
 
 .prose pre {
-  background-color: var(--paper);
+  background-color: var(--bg-code);
   padding: 8px;
   /*  fix encoded characters like &gt;*/
   white-space: pre-wrap;
@@ -31,8 +31,9 @@
   height: auto;
 }
 
-.prose p > code {
-  background-color: var(--paper);
+.prose p > code,
+.prose li > code {
+  background-color: var(--bg-code);
   padding: 4px;
   margin: -4px;
 }
@@ -41,6 +42,8 @@
   position: absolute;
   top: 16px;
   left: 16px;
+  font-size: 0.75rem;
+  padding: 4px 8px;
 }
 
 .code {
@@ -52,7 +55,7 @@
   max-width: 65ch;
 }
 
-.prose [class~="lead"] {
+.prose [class~='lead'] {
   font-size: 1.25em;
   line-height: 1.6;
   margin-top: 1.2em;
@@ -64,14 +67,13 @@
 }
 
 .prose a::before {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -0.3em;
   left: 0;
   right: 0;
   height: 3px;
   width: 100%;
-  @apply bg-gradient-teal transform bg-gradient-to-r transition-transform duration-200;
   pointer-events: none;
 }
 
@@ -82,12 +84,14 @@
 
 .prose strong {
   font-weight: 600;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .prose ol {
   counter-reset: list-counter;
   margin-top: 1.25em;
   margin-bottom: 1.25em;
+  list-style-type: decimal;
 }
 
 .prose ol > li {
@@ -97,7 +101,7 @@
 }
 
 .prose ol > li::before {
-  content: counter(list-counter) ".";
+  content: counter(list-counter) '.';
   position: absolute;
   font-weight: 400;
 }
@@ -108,7 +112,7 @@
 }
 
 .prose ul > li::before {
-  content: "";
+  content: '';
   position: absolute;
   border-radius: 50%;
   width: 0.375em;
@@ -128,7 +132,7 @@
   font-style: italic;
   color: var(--primary);
   border-left-width: 0.25rem;
-  quotes: "\201C""\201D""\2018""\2019";
+  quotes: '\201C''\201D''\2018''\2019';
   margin-left: 0;
   padding-left: 0.5em;
   border-left: 2px solid var(--primary);
@@ -148,14 +152,17 @@
   margin-top: 1.5em;
   margin-bottom: 0.8888889em;
   line-height: 1.1111111;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .prose h2 {
   font-weight: 700;
-  font-size: 1.5em;
-  margin-top: 2em;
+  font-size: 2rem;
+  margin-top: 2rem;
   margin-bottom: 1em;
   line-height: 1.3333333;
+  font-family: 'Work Sans', sans-serif;
+  text-decoration: underline dotted;
 }
 
 .prose h3 {
@@ -185,11 +192,11 @@
 }
 
 .prose code::before {
-  content: "`";
+  content: '`';
 }
 
 .prose code::after {
-  content: "`";
+  content: '`';
 }
 
 .prose pre {
@@ -218,11 +225,11 @@
 }
 
 .prose pre code::before {
-  content: "";
+  content: '';
 }
 
 .prose pre code::after {
-  content: "";
+  content: '';
 }
 
 .prose table {
@@ -265,13 +272,14 @@
 }
 
 .prose {
-  font-size: 1rem;
   line-height: 1.75;
+  font-size: 1.1rem;
 }
 
 .prose p {
-  margin-top: 1.25em;
-  margin-bottom: 1.25em;
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
+  line-height: 1.6rem;
 }
 
 .prose img {
@@ -306,6 +314,7 @@
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   padding-left: 1em;
+  list-style-type: circle;
 }
 
 .prose li {

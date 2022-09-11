@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 const App = () => {
   const [name, setName] = useState('');
+  // Nom important, `is` car c'est un boolean.
   const [isNameReversed, setIsNameReversed] = useState(false);
 
   const onSubmit = (event) => {

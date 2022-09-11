@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const Todos = ({ todos }) => (
-  <div>
+  <ul>
     {todos.map((todo, i) => (
-      <div key={i}>{todo}</div>
+      <li key={i}>{todo}</li>
     ))}
-  </div>
+  </ul>
 );
 
 const TodoForm = ({ addTodo }) => {
@@ -40,20 +40,12 @@ const Username = ({ username, setUsername }) => {
   );
 };
 
-const Greeting = ({ favoriteAnimal, username }) => {
-  return (
-    <p>
-      <b>{username}</b>'s favorite animal is <b>{favoriteAnimal}</b>
-    </p>
-  );
-};
-
 // 🦁 Il faudra ajouter les props "favoriteAnimal" et "setFavoriteAnimal" ici !
 const FavoriteAnimal = () => {
   // 🦁 Déplace se state dans le composant "UserAnimalForm".
   // Tu dois déplacer se state, car c'est un composant aux dessus qui a besoin
   // De cette donnée.
-  const [favoriteAnimal, setFavoriteAnimal] = useState("Dog");
+  const [favoriteAnimal, setFavoriteAnimal] = useState('Dog');
   return (
     <input
       type="text"
@@ -63,15 +55,23 @@ const FavoriteAnimal = () => {
   );
 };
 
+const Greeting = ({ favoriteAnimal, username }) => {
+  return (
+    <p>
+      <b>{username}</b>'s favorite animal is <b>{favoriteAnimal}</b>
+    </p>
+  );
+};
+
 // 🦁 Crée un nouveau composant nommé : "UserAnimalForm".
 // Dedans tu vas avoir toute la logique par rapport à la phrase concernant
 // le username et le favorite animal.
 
 const App = () => {
-  const [todos, setTodos] = useState(["Learn React", "Learn React Hooks"]);
+  const [todos, setTodos] = useState(['Learn React', 'Learn React Hooks']);
   const [count, setCount] = useState(0);
   // 🦁 Déplace ce state dans le composant "UserAnimalForm".
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
 
   const addTodo = (todo) => {
     setTodos([...todos, todo]);

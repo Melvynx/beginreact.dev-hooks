@@ -11,7 +11,7 @@ const SmallComponentTop = () => {
   );
 };
 
-const ComponentScrollCounter = ({ children, top }) => {
+const ComponentScrollCounter = ({ children, topChildren }) => {
   const [scroll, setScroll] = useState(0);
 
   return (
@@ -22,7 +22,7 @@ const ComponentScrollCounter = ({ children, top }) => {
       }}
     >
       <div style={{ height: "800px" }}>
-        {top}
+        {topChildren}
         <p>Hey, you scroll {scroll}</p>
         {children}
       </div>
@@ -32,7 +32,7 @@ const ComponentScrollCounter = ({ children, top }) => {
 
 const App = () => {
   return (
-    <ComponentScrollCounter top={<SmallComponentTop />}>
+    <ComponentScrollCounter topChildren={<SmallComponentTop />}>
       <ExpensiveComponent />
     </ComponentScrollCounter>
   );

@@ -66,8 +66,8 @@ export const Router = () => {
 
 const ExerciseRoutes = ({ data }) => {
   return (
-    <div>
-      <h1>{data.name}</h1>
+    <div className="navigation-page">
+      <h1 className="work-sans">{data.name}</h1>
       <div className="nav-list">
         {data.parts.exercise ? (
           <Link className="router-exercise" to={`/${data.name}/exercise`}>
@@ -96,8 +96,8 @@ const ExerciseRoutes = ({ data }) => {
 
 const Home = () => {
   return (
-    <div>
-      <h1>BeginReact - Les hooks</h1>
+    <div className="navigation-page">
+      <h1 className="work-sans">BeginReact - Les hooks</h1>
       <div className="nav-list">
         {EXERCISES.map((exercise, i) => (
           <Link key={i} to={`/${exercise.name}`}>

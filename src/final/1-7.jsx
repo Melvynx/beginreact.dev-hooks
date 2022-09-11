@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const Todos = ({ todos }) => (
-  <div>
+  <ul>
     {todos.map((todo, i) => (
-      <div key={i}>{todo}</div>
+      <li key={i}>{todo}</li>
     ))}
-  </div>
+  </ul>
 );
 
 const TodoForm = ({ addTodo }) => {
@@ -27,7 +27,7 @@ const TodoForm = ({ addTodo }) => {
 };
 
 const Todo = () => {
-  const [todos, setTodos] = useState(["Learn React", "Learn React Hooks"]);
+  const [todos, setTodos] = useState(['Learn React', 'Learn React Hooks']);
 
   const addTodo = (todo) => {
     setTodos([...todos, todo]);
@@ -75,8 +75,8 @@ const FavoriteAnimal = ({ favoriteAnimal, setFavoriteAnimal }) => {
 };
 
 const UserAnimalForm = () => {
-  const [username, setUsername] = useState("");
-  const [favoriteAnimal, setFavoriteAnimal] = useState("Dog");
+  const [username, setUsername] = useState('');
+  const [favoriteAnimal, setFavoriteAnimal] = useState('Dog');
 
   return (
     <div className="vertical-stack">
@@ -102,7 +102,7 @@ const App = () => {
     <div>
       <Todo />
       <h2>Counter</h2>
-      <Counter count={count} increment={() => setCount((p) => p + 1)} />
+      <Counter />
       <UserAnimalForm />
     </div>
   );

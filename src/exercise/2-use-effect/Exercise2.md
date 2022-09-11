@@ -23,7 +23,8 @@ Dans la vidéo Intro, je t'explique en détail ce graphique.
 
 Mais c'est quoi un `side effect` ?
 
-Il permet de garder ton composant synchroniser avec des système externe. (browser APIs, third-party libraries, network, etc...)
+Il permet de garder ton composant synchroniser avec des système externe.
+(browser APIs ex: localStorage, third-party libraries, network, etc...)
 
 Pour update des states basée sur un autre state tu n'as pas besoin d'avoir de useEffect.
 
@@ -32,20 +33,24 @@ Pour update des states basée sur un autre state tu n'as pas besoin d'avoir de u
 Dans le composant `Hello`, on veut que le `name` soit garder dans le `localStorage`
 afin de ne pas le perdre quand on recharge la page.
 
-Pour ça écoute 🦁 dans le fichier Exercise.
+Pour ça écoute Lienx 🦁 dans le fichier Exercise.
+
+💌 Tu comprends l'utilisation basique du `useEffect`.
 
 ## Exercise 2 - Optimisation
 
 Notre client a des problèmes, notre application récupère tout le temps la valeur
 dans le localStorage.
 
-Essai de remplacer la valeur par défaut par une arrow function.
+Essai de remplacer la valeur par défaut par une arrow function. (`useState(() => ...)`)
 
 Effectivement `useState` peut prendre une fonction en paramètre pour initialiser
 la valeur par défaut.
 
-En plus il c'est rendu compte que quand on clique sur le Counter, le `useEffect`
-est appelé. Il faut que tu ajoute des dépendances à notre `useEffect`.
+En plus il s'est rendu compte que quand on clique sur le Counter, le `useEffect`
+est appelé. Il faut que tu ajoutes des dépendances à notre `useEffect`.
+
+💌 Tu comprends comment fonctionne l'initial value du `useState`.
 
 ## Exercise 3 - Refactor
 
@@ -56,6 +61,8 @@ déplacer la logique.
 
 `useStickyState` va retourné : `[state, setState]` pour garder la même API que `useState`.
 
+💌 Tu comprends comment fonctionne les custom hooks.
+
 ## Exercise 4 - Remplacer le useEffect
 
 Le `useEffect` est devenue inutile, car il permet de tracker un side effect.
@@ -63,20 +70,23 @@ Le `useEffect` est devenue inutile, car il permet de tracker un side effect.
 Hors ici ce n'est plus un side effect car on sait exactement quand notre state est
 modifié.
 
-Pour gérer le localStorage on va crée une fonction `setValue` dans laquelle on va
-changé le state mais aussi update le localStorage.
+Pour gérer le localStorage on va créer une fonction `setValue` dans laquelle on va
+changer le state, mais aussi update le localStorage.
 
 `setValue` est une fonction à l'intérieur de `useStickyState`. Dans la valeur de retours
-tu peux remplacer `setState` par `setValue` pour garder la même API.
+tu peux remplacer `setState` par `setValue` pour garder la même API. (attention `setState`
+peut prendre une fonction en paramètre, il faut gérer ce cas dans `setValue`)
 
-⚠️ Le `useEffect` n'était pas une mauvaise pratique. Cette exercise est à but pédagogique
-pour mieux comprendre le `useEffect`.
+⚠️ Le `useEffect` à sa place ici, je fais cette exercise pour te rendre
+compte des possibilités et de comprendre comment tu peux remplacer le `useEffect`
+
+💌 Tu comprends que l'usage du `useEffect` peut parfois être remplacé.
 
 ## Exercise 5 - Nouvelle feature !
 
 Le client souhaite que le Counter s'incrémente quand la taille de la fenêtre change.
 
-Pour ça il va falloir ajouté un `useEffect` dans le composant `App`.
+Pour ça il va falloir ajouter un `useEffect` dans le composant `App`.
 
 💡 Pour débuter
 
@@ -92,8 +102,22 @@ useEffect(() => {
 });
 ```
 
-⚠️ Cette exercise est un défi. Si tu le réussi facilement tant mieux, sinon regarde
+⚠️ Cette exercise est un défi. Si tu le réussis facilement tant mieux, sinon regarde
 la vidéo de solution.
+
+💌 Tu apprends l'utilisation de la clean up function.
+
+## Exercise 6 - Refactor
+
+Maintenant notre composant App rerender quand la fenêtre change. C'est une très
+mauvaise pratique, car ça ralenti notre navigateur.
+
+La solution et de déplacer la logique du Counter et du listener qui écoute les changements
+de la taille de la fenêtre dans un composant.
+
+Car uniquement le bouton a besoin de savoir quand la taille de la fenêtre change.
+
+💌 Tu apprends à correctement séparer ton code pour éviter de ralentir ta page.
 
 ## Solution 6 - EXPLICATION DU HOOKS FLOW
 

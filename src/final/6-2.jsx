@@ -21,7 +21,7 @@ const Name = ({ name }) => {
 
 const NameMemo = memo(Name);
 
-const Age = ({ age, name }) => {
+const Age = ({ age }) => {
   const ref = useOnRenderStyle();
   return (
     <p ref={ref}>
@@ -30,9 +30,7 @@ const Age = ({ age, name }) => {
   );
 };
 
-const AgeMemo = memo(Age, (prevProps, nextProps) => {
-  return true;
-});
+const AgeMemo = memo(Age);
 
 const App = () => {
   const [user, setUser] = useState({ name: "Jean", age: "14" });
