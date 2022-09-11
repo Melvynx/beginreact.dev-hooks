@@ -1,14 +1,14 @@
 # useState
 
-`useState` est le hooks **le plus utilisé** dans React (et le plus simple).
+`useState` est le hook **le plus utilisé** dans React (et le plus simple).
 
 Il a un seul but :
 
-> Garder un état dans un composant synchroniser avec l'interface.
+> Garder un état dans un composant synchronisé avec l'interface.
 
 Pour faire en sorte que ton composant soit toujours à jour, il faut que React
-connaissement le moment où tu update le state. C'est pour cette raison que la création
-d'un state ce fait avec :
+connaisse le moment où tu update le state. C'est pour cette raison que la création
+d'un state se fait avec :
 
 ```js
 const [state, setState] = useState(initialState);
@@ -17,39 +17,39 @@ const [state, setState] = useState(initialState);
 `useState` retourne un tableau de deux éléments :
 
 - Le `current state` de cette variable, que l'`initial state` définit par défaut
-- La `set function` qui va changer le state avec n'importe quel autre valeur.
+- La `set function` qui va changer le state avec n'importe quelle autre valeur.
 
 Donc pour update le state il faut utiliser `setState(newState)`.
 
 [📖 useState](https://beta.reactjs.org/apis/usestate)
 
-## Exercise 1
+## Exercice 1
 
 Ajoute un state pour que l'application te dise bonjour avec ton nom en temps réel.
 
 Instructions dans le fichier.
 
-- 💌 Tu comprends comment basiquement crée un state.
+- 💌 Tu comprends comment basiquement créer un state.
 
-## Exercise 2 - Ajout d'un nouveau state
+## Exercice 2 - Ajout d'un nouveau state
 
-Ajoute un checkbox qui quand elle est activé va afficher le prénom **inversé**.
+Ajoute une checkbox qui, quand elle est activée, va afficher le prénom **inversé**.
 
-- Melvyn -> nyvylM
+- Melvyn -> nyvyleM
 - Jean -> naeJ
 
 🦁 Tu peux ajouter une checkbox (`<input type="checkbox" />`) **controller**.
 
 Attention, il te faut rajouter un nouveau state.
 Et à aucun moment il faut inverser la valeur du state `name` (non pas que ce serait
-une erreur, juste que ce n'est pas mon but avec mon exercise).
+une erreur, juste que ce n'est pas mon but avec mon exercice).
 
 [📖 Comment inverser une string en JS](https://www.youtube.com/watch?v=ygP1PMkDz0I)
 
-- 💌 Tu apprends ici à gérer un affichage d'état en fonction d'autre état.
+- 💌 Tu apprends ici à gérer un affichage d'état en fonction d'autres états.
 - 💌 Tu apprends aussi à gérer un boolean en fonction de sa valeur précédente.
 
-## Exercise 3 - Stocker chaque changement de notre state
+## Exercice 3 - Stocker chaque changement de notre state
 
 Notre state change, il faut stocker ce changement dans un autre state et les
 afficher sous forme de liste
@@ -72,7 +72,7 @@ et qu'un nom peut revenir plusieurs fois.
 - 💌 Tu apprends à ajouter dans une liste.
 - 💌 Tu comprendras le lifecycle des hooks avec un bug expliqué.
 
-## Exercise 4 - Supprimer des "NameHistory"
+## Exercice 4 - Supprimer des "NameHistory"
 
 Quand tu cliques sur un historique, tu vas supprimer celui-ci de la liste.
 
@@ -86,38 +86,38 @@ Quand tu cliques sur un historique, tu vas supprimer celui-ci de la liste.
 </ul>
 ```
 
-Il te faut rajouter la fonction `deleteHistory` qui va supprimer le bonne élément
+Il te faut rajouter la fonction `deleteHistory` qui va supprimer le bon élément
 de la liste en fonction de l'index.
 
 - 💌 Tu apprends à supprimer dans une liste.
 
 ---
 
-## Exercise 5 - Ou mettre les states ?
+## Exercice 5 - Où mettre les states ?
 
 ⚠️ Tu dois aller dans le fichier `Exercise1-2.jsx`, ce n'est pas la suite
 de ce qu'on a fait jusqu'ici. ⚠️
 
-En React un des skill le plus important, **c'est de savoir où mettre les states**,
+En React, un des skill le plus important, **c'est de savoir où mettre les states**,
 et c'est une énorme source d'erreur.
 
 Je t'explique le context, je viens de créer l'application la plus
-mal faites possible.
+mal faite possible.
 
 **Ton but : la réparer.**
 
 _1er problème :_
 
-Dans la section "Animal" quand on change le "Favorite animal" rien ne change
-dans le text en dessous. Met le state au bon endroit pour réparer que l'élément
-en dessous se mettent à jour.
+Dans la section "Animal", quand on change le "Favorite animal", rien ne change
+dans le text en dessous. Met le state au bon endroit pour réparer afin que l'élément
+en dessous se mette à jour.
 
 Et crée un nouveau composant `UserAnimalForm` qui possède nos deux states et le
 texte `Greeting`.
 
-- 💌 Tu comprends comme utiliser `useState` dans une application.
+- 💌 Tu comprends comment utiliser `useState` dans une application.
 
-## Exercise 6 - Refactor... Again
+## Exercice 6 - Refactor... Again
 
 Deux concepts à comprendre :
 
@@ -132,21 +132,21 @@ Ton objectif est de créer un nouveau composant `TodoList` avec le state `todos`
 
 Pourquoi ?
 
-Car ce state n'est ni utiliser par notre `UserAnimalForm` ni par
+Car ce state n'est ni utilisé par notre `UserAnimalForm` ni par
 notre `Counter`.
 
-Donc il n'a pas ça place ici.
+Donc il n'a pas sa place ici.
 
-- 💌 Tu comprends qu'il faut repartir les states aux plus proches de leur
+- 💌 Tu comprends qu'il faut répartir les states au plus proche de leur
   usage dans des petits composants.
 
-## Exercise 7 - Refactor... Again
+## Exercice 7 - Refactor... Again
 
 Même chose pour Counter.
 
 Tu peux simplement déplacer le state `count` dans le composant "Counter".
 
-Effectivement le state `count` **n'est utiliser que dans `Counter`** ! Il n'a
+Effectivement, le state `count` **n'est utilisé que dans `Counter`** ! Il n'a
 pas sa place dans `App` mais dans `Counter`.
 
 Voici à quoi devrait ressembler le composant App :
@@ -168,12 +168,12 @@ const App = () => {
 
 ## Conclusion
 
-Effectivement ce genre d'exercise ne s'approche pas de cas réel. Ce qui est intéressant
-avec le première exercise est de comprendre **comment** `useState` fonctionne
-même si on découvriras de nouvelle chose par la suite.
+Effectivement, ce genre d'exercice ne s'approche pas de cas réels. Ce qui est intéressant
+avec le premier exercice c'est de comprendre **comment** `useState` fonctionne
+même si on découvrira de nouvelles choses par la suite.
 
-Le second exercise permet quant à lui de **comprendre** et avoir la philosophie de
+Le second exercice permet quant à lui de **comprendre** et avoir la philosophie de
 séparer les composants correctement.
 
-J'ai vue tellement d'application avec des states globals alors qu'on aurait pus les
-déplacer dans les enfants. Je souhaite vraiment que tu ai compris ce concept.
+J'ai vu tellement d'applications avec des states globaux alors qu'on aurait pu les
+déplacer dans les enfants. Je souhaite vraiment que tu aies compris ce concept.

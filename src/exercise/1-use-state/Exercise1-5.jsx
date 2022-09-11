@@ -42,8 +42,8 @@ const Username = ({ username, setUsername }) => {
 
 // 🦁 Il faudra ajouter les props "favoriteAnimal" et "setFavoriteAnimal" ici !
 const FavoriteAnimal = () => {
-  // 🦁 Déplace se state dans le composant "UserAnimalForm".
-  // Tu dois déplacer se state, car c'est un composant aux dessus qui a besoin
+  // 🦁 Déplace ce state dans le composant "UserAnimalForm".
+  // Tu dois déplacer ce state, car c'est un composant au dessus qui a besoin
   // De cette donnée.
   const [favoriteAnimal, setFavoriteAnimal] = useState('Dog');
   return (
