@@ -95,7 +95,7 @@ de la liste en fonction de l'index.
 
 ## Exercice 5 - Où mettre les states ?
 
-⚠️ Tu dois aller dans le fichier `Exercise1-2.jsx`, ce n'est pas la suite
+⚠️ Tu dois aller dans le fichier `Exercise1-5.jsx`, ce n'est pas la suite
 de ce qu'on a fait jusqu'ici. ⚠️
 
 En React, un des skill le plus important, **c'est de savoir où mettre les states**,
