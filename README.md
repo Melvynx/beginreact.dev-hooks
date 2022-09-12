@@ -16,7 +16,7 @@ Découvertes en profondeurs des hooks en React.
 ## Setup du projet
 
 ```bash
-git clone https://github.com/Melvynx/beginreact.dev-components.git
+git clone https://github.com/Melvynx/beginreact.dev-hooks.git
 cd beginreact.dev-components
 npm install
 ```
