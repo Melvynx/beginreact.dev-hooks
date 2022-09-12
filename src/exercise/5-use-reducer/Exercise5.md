@@ -21,7 +21,7 @@ En faite useState est une version limitée de useReducer, regarde :
 ```js
 const reducer = (prevValue, newValue) => {
   // On peut aussi passé une fonction dans le `setState`
-  if (typeof newValue === 'function') {
+  if (typeof newValue === "function") {
     return newValue(prevValue);
   }
   return newValue;
@@ -57,9 +57,9 @@ s'adapte à l'action qui est passé en paramètre.
 
 ```js
 switch (action) {
-  case 'increment':
+  case "increment":
   // ...
-  case 'decrement':
+  case "decrement":
   // ...
   default:
   // ...
@@ -80,7 +80,7 @@ Pour cette exercise 3 choses :
 
 ```js
 const Actions = {
-  INCREMENT: 'increment',
+  INCREMENT: "increment",
 };
 ```
 

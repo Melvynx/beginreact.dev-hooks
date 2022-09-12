@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const App = () => {
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   // Nom important, `is` car c'est un boolean.
   const [isNameReversed, setIsNameReversed] = useState(false);
 
@@ -12,7 +12,12 @@ const App = () => {
   return (
     <div className="vertical-stack">
       <div>
-        <input type="text" placeholder="Name" value={name} onChange={onSubmit} />
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={onSubmit}
+        />
         <input
           type="checkbox"
           checked={isNameReversed}
@@ -27,10 +32,10 @@ const App = () => {
 
 const Name = ({ name, isNameReversed }) => {
   if (!name) {
-    return 'Write your name';
+    return "Write your name";
   }
 
-  return `Hello ${isNameReversed ? name.split('').reverse().join('') : name}`;
+  return `Hello ${isNameReversed ? name.split("").reverse().join("") : name}`;
 };
 
 export default App;

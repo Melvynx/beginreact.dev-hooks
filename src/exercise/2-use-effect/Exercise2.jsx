@@ -1,5 +1,5 @@
 // 🦁 Ajout l'import de useEffect
-import { useState } from 'react';
+import { useState } from "react";
 
 // 🦁 Ajoute une props `key`
 const Hello = ({ defaultValue }) => {
@@ -14,7 +14,11 @@ const Hello = ({ defaultValue }) => {
   return (
     <div>
       Name
-      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
     </div>
   );
 };

@@ -31,7 +31,7 @@ Instructions dans le fichier.
 
 - 💌 Tu comprends comment basiquement créer un state.
 
-## Exercice 2 - Ajout d'un nouveau state
+## Extra 2 - Ajout d'un nouveau state
 
 Ajoute une checkbox qui, quand elle est activée, va afficher le prénom **inversé**.
 
@@ -49,7 +49,7 @@ une erreur, juste que ce n'est pas mon but avec mon exercice).
 - 💌 Tu apprends ici à gérer un affichage d'état en fonction d'autres états.
 - 💌 Tu apprends aussi à gérer un boolean en fonction de sa valeur précédente.
 
-## Exercice 3 - Stocker chaque changement de notre state
+## Extra 3 - Stocker chaque changement de notre state
 
 Notre state change, il faut stocker ce changement dans un autre state et les
 afficher sous forme de liste
@@ -72,7 +72,7 @@ et qu'un nom peut revenir plusieurs fois.
 - 💌 Tu apprends à ajouter dans une liste.
 - 💌 Tu comprendras le lifecycle des hooks avec un bug expliqué.
 
-## Exercice 4 - Supprimer des "NameHistory"
+## Extra 4 - Supprimer des "NameHistory"
 
 Quand tu cliques sur un historique, tu vas supprimer celui-ci de la liste.
 
@@ -96,7 +96,8 @@ de la liste en fonction de l'index.
 ## Exercice 5 - Où mettre les states ?
 
 ⚠️ Tu dois aller dans le fichier `Exercise1-5.jsx`, ce n'est pas la suite
-de ce qu'on a fait jusqu'ici. ⚠️
+de ce qu'on a fait jusqu'ici et ouvrir
+["L'exercise 2"](http://127.0.0.1:5173/1-use-state/exercise/2) pour voir le rendu ⚠️
 
 En React, un des skill le plus important, **c'est de savoir où mettre les states**,
 et c'est une énorme source d'erreur.
@@ -117,7 +118,7 @@ texte `Greeting`.
 
 - 💌 Tu comprends comment utiliser `useState` dans une application.
 
-## Exercice 6 - Refactor... Again
+## Extra 6 - Refactor... Again
 
 Deux concepts à comprendre :
 
@@ -144,7 +145,7 @@ dans un **custom hooks** qui contiendra le state ainsi que les fonctions
 - 💌 Tu comprends qu'il faut répartir les states au plus proche de leur
   usage dans des petits composants.
 
-## Exercice 7 - Refactor... Again
+## Extra 7 - Refactor... Again
 
 Même chose pour Counter.
 

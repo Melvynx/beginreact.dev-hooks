@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const getDefaultName = (key, defaultValue) => {
   return JSON.parse(localStorage.getItem(key)) || defaultValue;
@@ -21,7 +21,11 @@ const Hello = ({ key, defaultValue }) => {
   return (
     <div>
       Name
-      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
     </div>
   );
 };
@@ -35,10 +39,10 @@ const App = () => {
       // setCounter(counter + 1);
       setCounter((prev) => prev + 1);
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 

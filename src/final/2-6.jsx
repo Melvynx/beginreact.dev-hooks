@@ -1,29 +1,32 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from "react";
 
 const EffectExample = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    console.log(`%c Run Effects ${count}`, 'color: green');
+    console.log(`%c Run Effects ${count}`, "color: green");
     return () => {
-      console.log(`%c Cleanup Effects ${count}`, 'color: red');
+      console.log(`%c Cleanup Effects ${count}`, "color: red");
     };
   }, [count]);
 
   useLayoutEffect(() => {
-    console.log(`%c Run LayoutEffects ${count}`, 'color: green; background: black');
+    console.log(
+      `%c Run LayoutEffects ${count}`,
+      "color: green; background: black"
+    );
     return () => {
       console.log(
         `%c Cleanup LayoutEffects ${count}`,
-        'color: red; background: black'
+        "color: red; background: black"
       );
     };
   }, [count]);
 
   useEffect(() => {
-    console.log('%c Component Mount', 'color: blue');
+    console.log("%c Component Mount", "color: blue");
     return () => {
-      console.log('%c Component Unmount', 'color: red');
+      console.log("%c Component Unmount", "color: red");
     };
   }, []);
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const Todos = ({ todos }) => (
   <ul>
@@ -45,7 +45,7 @@ const FavoriteAnimal = () => {
   // 🦁 Déplace ce state dans le composant "UserAnimalForm".
   // Tu dois déplacer ce state, car c'est un composant au dessus qui a besoin
   // De cette donnée.
-  const [favoriteAnimal, setFavoriteAnimal] = useState('Dog');
+  const [favoriteAnimal, setFavoriteAnimal] = useState("Dog");
   return (
     <input
       type="text"
@@ -68,10 +68,10 @@ const Greeting = ({ favoriteAnimal, username }) => {
 // le username et le favorite animal.
 
 const App = () => {
-  const [todos, setTodos] = useState(['Learn React', 'Learn React Hooks']);
+  const [todos, setTodos] = useState(["Learn React", "Learn React Hooks"]);
   const [count, setCount] = useState(0);
   // 🦁 Déplace ce state dans le composant "UserAnimalForm".
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState("");
 
   const addTodo = (todo) => {
     setTodos([...todos, todo]);

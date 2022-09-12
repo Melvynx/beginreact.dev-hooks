@@ -3,7 +3,7 @@
 
 const App = () => {
   // 🦁 Remplace le name par un state
-  let name = '';
+  let name = "";
 
   const onSubmit = (event) => {
     // 🦁 Update le state avec la nouvelle valeur
@@ -18,7 +18,7 @@ const App = () => {
         // 🦁 Ajoute value={name} pour garder le state sync
         // 🦁 Ajoute onChange={onSubmit} pour update le state quand la valeur change
       />
-      <p>{name ? `Hello ${name}` : 'Write your name'}</p>
+      <p>{name ? `Hello ${name}` : "Write your name"}</p>
     </div>
   );
 };

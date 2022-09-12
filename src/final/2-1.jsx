@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const Hello = ({ key, defaultValue }) => {
   const [name, setName] = useState(
@@ -12,7 +12,11 @@ const Hello = ({ key, defaultValue }) => {
   return (
     <div>
       Name
-      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
     </div>
   );
 };
