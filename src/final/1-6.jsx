@@ -18,6 +18,7 @@ const TodoForm = ({ addTodo }) => {
 
     e.target.reset();
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <input type="text" id="todo" />
@@ -26,12 +27,18 @@ const TodoForm = ({ addTodo }) => {
   );
 };
 
-const Todo = () => {
-  const [todos, setTodos] = useState(['Learn React', 'Learn React Hooks']);
+const useTodos = (defaultTodos) => {
+  const [todos, setTodos] = useState(defaultTodos);
 
   const addTodo = (todo) => {
     setTodos([...todos, todo]);
   };
+
+  return { todos, addTodo };
+};
+
+const TodoList = () => {
+  const { todos, addTodo } = useTodos();
 
   return (
     <div>
@@ -102,7 +109,7 @@ const App = () => {
 
   return (
     <div>
-      <Todo />
+      <TodoList />
       <h2>Counter</h2>
       <Counter count={count} increment={() => setCount((p) => p + 1)} />
       <UserAnimalForm />

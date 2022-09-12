@@ -137,6 +137,10 @@ notre `Counter`.
 
 Donc il n'a pas sa place ici.
 
+Dans notre composant `TodoList` on peut séparer la logique des `todos`
+dans un **custom hooks** qui contiendra le state ainsi que les fonctions
+`addTodo` par exemple.
+
 - 💌 Tu comprends qu'il faut répartir les states au plus proche de leur
   usage dans des petits composants.
 
