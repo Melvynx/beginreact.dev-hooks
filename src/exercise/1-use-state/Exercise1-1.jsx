@@ -15,8 +15,8 @@ const App = () => {
       <input
         type="text"
         placeholder="Name"
-        // 🦁 Ajoute value={name} pour garder le state sync
-        // 🦁 Ajoute onChange={onSubmit} pour update le state quand la valeur change
+        // 🦁 Ajoute la valeur
+        // 🦁 Ajoute le onChange pour update le state quand la valeur change
       />
       <p>{name ? `Hello ${name}` : "Write your name"}</p>
     </div>
