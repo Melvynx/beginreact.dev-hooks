@@ -5,7 +5,7 @@ const App = () => {
   const [isNameReversed, setIsNameReversed] = useState(false);
   const [nameHistory, setNameHistory] = useState([]);
 
-  const onSubmit = (event) => {
+  const handleChange = (event) => {
     setName(event.target.value);
     setNameHistory([...nameHistory, event.target.value || "-"]);
   };
@@ -17,7 +17,7 @@ const App = () => {
           type="text"
           placeholder="Name"
           value={name}
-          onChange={onSubmit}
+          onChange={handleChange}
         />
         <input
           type="checkbox"

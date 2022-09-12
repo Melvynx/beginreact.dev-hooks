@@ -1,21 +1,32 @@
 import { useState } from "react";
 
-const App = () => {
-  const [name, setName] = useState("");
-  const [isNameReversed, setIsNameReversed] = useState(false);
-  const [nameHistory, setNameHistory] = useState([]);
+const useStateHistory = () => {
+  const [history, setHistory] = useState([]);
 
-  const onSubmit = (event) => {
-    setName(event.target.value);
-    setNameHistory([...nameHistory, event.target.value || "-"]);
+  const addHistory = (value = "-") => {
+    setHistory((prev) => [...prev, value]);
   };
 
   const deleteHistory = (index) => {
-    // setNameHistory(previous => previous.filter((_, i) => i !== index));
-    setNameHistory((previous) => {
+    if (!index) return;
+
+    setHistory((previous) => {
       previous.splice(index, 1);
       return [...previous];
     });
+  };
+
+  return { history, addHistory, deleteHistory };
+};
+
+const App = () => {
+  const [name, setName] = useState("");
+  const [isNameReversed, setIsNameReversed] = useState(false);
+  const { history, addHistory, deleteHistory } = useStateHistory();
+
+  const handleChange = (event) => {
+    setName(event.target.value);
+    addHistory(event.target.value);
   };
 
   return (
@@ -25,7 +36,7 @@ const App = () => {
           type="text"
           placeholder="Name"
           value={name}
-          onChange={onSubmit}
+          onChange={handleChange}
         />
         <input
           type="checkbox"
@@ -36,7 +47,7 @@ const App = () => {
       </div>
       <Name name={name} isNameReversed={isNameReversed} />
       <ul style={{ textAlign: "left" }}>
-        {nameHistory.map((name, index) => (
+        {history.map((name, index) => (
           <li onClick={() => deleteHistory(index)} key={index}>
             {name}
           </li>

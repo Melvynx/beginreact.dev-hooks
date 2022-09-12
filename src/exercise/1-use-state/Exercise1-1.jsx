@@ -5,7 +5,7 @@ const App = () => {
   // 🦁 Remplace le name par un state
   let name = "";
 
-  const onSubmit = (event) => {
+  const handleChange = (event) => {
     // 🦁 Update le state avec la nouvelle valeur
     // 💡 `event.target.value`
   };

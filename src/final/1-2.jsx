@@ -5,7 +5,7 @@ const App = () => {
   // Nom important, `is` car c'est un boolean.
   const [isNameReversed, setIsNameReversed] = useState(false);
 
-  const onSubmit = (event) => {
+  const handleChange = (event) => {
     setName(event.target.value);
   };
 
@@ -16,7 +16,7 @@ const App = () => {
           type="text"
           placeholder="Name"
           value={name}
-          onChange={onSubmit}
+          onChange={handleChange}
         />
         <input
           type="checkbox"

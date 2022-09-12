@@ -89,7 +89,11 @@ Quand tu cliques sur un historique, tu vas supprimer celui-ci de la liste.
 Il te faut rajouter la fonction `deleteHistory` qui va supprimer le bon élément
 de la liste en fonction de l'index.
 
+⚠️ Notre composant devient **complexe**. Crée un hooks `useStateHistory`
+et met tout ce qui a un rapport avec l'historique dedans.
+
 - 💌 Tu apprends à supprimer dans une liste.
+- 💌 Tu apprends à correctement utiliser les custom hooks.
 
 ---
 
