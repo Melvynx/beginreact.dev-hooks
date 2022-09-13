@@ -1,11 +1,13 @@
 // 🦁 Ajout l'import de useEffect
-import { useState } from "react";
+import { useState } from 'react';
 
-// 🦁 Ajoute une props `key`
-const Hello = ({ defaultValue }) => {
+// 🦁 Crée une variable `NAME_KEY` avec la valeur `name`
+
+const NameInput = ({ defaultValue }) => {
   // 🦁 Change la valeur par défaut en récupérant la valeur stockée dans le localStorage
   // 💡 JSON.parse(localStorage.getItem(key))
-  // Si il est vide, on retourne la valeur par défaut
+  // 🦁 Attention il faut vérifier que localStorage.getItem(key) n'est pas null sinon tu vas avoir une erreur !
+  // Si il est vide, tu peux utiliser la valeur par défaut
   const [name, setName] = useState(defaultValue);
 
   // 🦁 Dans un `useEffect` update la valeur stockée dans le localStorage.
@@ -14,11 +16,7 @@ const Hello = ({ defaultValue }) => {
   return (
     <div>
       Name
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
     </div>
   );
 };
@@ -30,10 +28,7 @@ const App = () => {
     <div className="vertical-stack">
       <button onClick={() => setCounter(counter + 1)}>{counter}</button>
 
-      <Hello
-        defaultValue=""
-        // 🦁 Rajoute la props `key` avec la valeur `name`
-      />
+      <NameInput defaultValue="" />
     </div>
   );
 };

@@ -45,7 +45,7 @@ Il va retourner une fonction qu’on va nommer `onDebouce`. Les consignes sont d
 
 💌Tu comprends comment stoker des valeurs qui n'influe pas le render dans des useRef
 
-## Exercise 2
+## Extra 2
 
 Dans un but pédagogique, ajoute une `ref` nommé `inputRef` afin de récupérer
 la valeur de l'input.
@@ -55,7 +55,7 @@ la valeur stock dans la `ref` `inputRef`.
 
 💌Tu comprends que la ref permet aussi de référencer un élément du DOM.
 
-## Exercise 3
+## Extra 3
 
 En utilisant ce qu'on a appris avec les render dans l'exercise sur les `useEffect`,
 crée un hooks `useRenderCount` pour calculer le nombre de render qu'on fait subir

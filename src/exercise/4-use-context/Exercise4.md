@@ -15,7 +15,7 @@ Enfaite ce hooks répond à cette question :
 
 On va jeter un coup d'œil à la doc ensemble, mais le meilleur moyen de comprendre reste la pratique.
 
-## Exercise 1 - Refactor
+## Exercise
 
 J'ai fait une petite page très simple, avec `currentUser` stocké dans le contexte. Si tu vas voir
 l'application pour l'instant elle utilise des props.
@@ -26,7 +26,7 @@ Les instructions sont dans l'exercise.
 
 💌Tu apprends à utiliser les contexts pour éviter le "props drilling"
 
-## Exercise 2 - Split
+## Extra 2 - Split
 
 Maintenant dans le fichier `App` on a toute la logique métier (le `user`).
 
@@ -40,7 +40,7 @@ Essai de trouver la solution et si tu n'y arrives pas il y à le corriger.
 
 💌Tu apprends à séparer ton code afin de séparer la Vue et la Logique.
 
-## Exercise 3 - Création d'un nouveau context
+## Extra 3 - Création d'un nouveau context
 
 Notre client, c'est rendu compte que le composant du `Logout` était rerender
 quand le user change alors qu'il **n'a pas besoin du user** pour fonctionner.
@@ -53,7 +53,7 @@ dans le composant `UserContextProvider`.
 
 💌 Tu comprends qu'on peut optimiser `useContext` pour éviter des rerender inutile.
 
-## Exercise 4 - Utilisation de `context-selector`
+## Extra 4 - Utilisation de `context-selector`
 
 Dans cette formation, tu as un average déloyale : tu apprends et
 comprends l'utilisation de certaine library. Cette fois c'est [use-context-selector](https://www.npmjs.com/package/use-context-selector).

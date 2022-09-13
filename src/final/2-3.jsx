@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const getDefaultName = (key, defaultValue) => {
   return JSON.parse(localStorage.getItem(key)) || defaultValue;
@@ -14,17 +14,15 @@ const useStickyState = (key, defaultValue) => {
   return [state, setState];
 };
 
-const Hello = ({ key, defaultValue }) => {
-  const [name, setName] = useStickyState(key, defaultValue);
+const NAME_KEY = 'name';
+
+const NameInput = ({ defaultValue }) => {
+  const [name, setName] = useStickyState(NAME_KEY, defaultValue);
 
   return (
     <div>
       Name
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
     </div>
   );
 };
@@ -35,7 +33,7 @@ const App = () => {
   return (
     <div className="vertical-stack">
       <button onClick={() => setCounter(counter + 1)}>{counter}</button>
-      <Hello key="name" defaultValue="" />
+      <NameInput defaultValue="" />
     </div>
   );
 };

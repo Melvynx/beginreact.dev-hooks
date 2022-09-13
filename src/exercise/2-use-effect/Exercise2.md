@@ -10,7 +10,8 @@ Voici un graph pour le comprendre :
 
 <img src="../../../public/assets/react-hooks-flow.png" alt="react hooks flow" />
 
-Dans la vidéo Intro, je t'explique en détail ce graphique.
+Dans la vidéo Intro, je t'explique en détail ce graphique. Mais dans l'extra 6
+on vas comprendre sur le terrain comment ça fonctionne.
 
 `useEffect` permet de savoir :
 
@@ -28,7 +29,7 @@ Il permet de garder ton composant synchroniser avec des système externe.
 
 Pour update des states basée sur un autre state tu n'as pas besoin d'avoir de useEffect.
 
-## Exercise 1
+## Exercise
 
 Dans le composant `Hello`, on veut que le `name` soit garder dans le `localStorage`
 afin de ne pas le perdre quand on recharge la page.
@@ -37,22 +38,32 @@ Pour ça écoute Lienx 🦁 dans le fichier Exercise.
 
 💌 Tu comprends l'utilisation basique du `useEffect`.
 
-## Exercise 2 - Optimisation
+## Extra 2 - Optimisation
 
 Notre client a des problèmes, notre application récupère tout le temps la valeur
-dans le localStorage.
+dans le localStorage (à chaque render).
 
-Essai de remplacer la valeur par défaut par une arrow function. (`useState(() => ...)`)
+De plus, le code mis dans la defaultValue du useState est pas top top...
+
+Déplace cette logique dans une fonction `getInitialName` et utilise la dans le useState.
+
+Remplacer la valeur par défaut par une arrow function. (💡 `useState(() => ...)`)
 
 Effectivement `useState` peut prendre une fonction en paramètre pour initialiser
 la valeur par défaut.
 
+On comprendra dans la solution l'avantage de cette fonction !
+
 En plus il s'est rendu compte que quand on clique sur le Counter, le `useEffect`
-est appelé. Il faut que tu ajoutes des dépendances à notre `useEffect`.
+est appelé. Il faut que tu ajoutes des dépendances à notre `useEffect`
+pour éviter de l'appeler à chaque render.
+
+Car on change l'item dans le local storage même quand ça sert à rien.
 
 💌 Tu comprends comment fonctionne l'initial value du `useState`.
+💌 Tu comprends l'utilité des dépendances dans le `useEffect`.
 
-## Exercise 3 - Refactor
+## Extra 3 - Refactor
 
 Déplace toute la logique qui concerne le state et le localStorage dans un custom hooks.
 
@@ -63,7 +74,7 @@ déplacer la logique.
 
 💌 Tu comprends comment fonctionne les custom hooks.
 
-## Exercise 4 - Remplacer le useEffect
+## Extra 4 - Remplacer le useEffect
 
 Le `useEffect` est devenue inutile, car il permet de tracker un side effect.
 
@@ -82,9 +93,9 @@ compte des possibilités et de comprendre comment tu peux remplacer le `useEffec
 
 💌 Tu comprends que l'usage du `useEffect` peut parfois être remplacé.
 
-## Exercise 5 - Nouvelle feature !
+## Extra 5 - Nouvelle feature !
 
-Le client souhaite que le Counter s'incrémente quand la taille de la fenêtre change.
+Le client souhaite que le Counter s'incrémente automatiquement quand la taille de la fenêtre change.
 
 Pour ça il va falloir ajouter un `useEffect` dans le composant `App`.
 
@@ -95,7 +106,7 @@ useEffect(() => {
   const handleResize = () => {
     // ...
   };
-  window.addEventListener("resize", handleResize);
+  window.addEventListener('resize', handleResize);
   return () => {
     // clean up function
   };
@@ -107,7 +118,7 @@ la vidéo de solution.
 
 💌 Tu apprends l'utilisation de la clean up function.
 
-## Exercise 6 - Refactor
+## Extra 6 - Refactor
 
 Maintenant notre composant App rerender quand la fenêtre change. C'est une très
 mauvaise pratique, car ça ralenti notre navigateur.
@@ -115,10 +126,10 @@ mauvaise pratique, car ça ralenti notre navigateur.
 La solution et de déplacer la logique du Counter et du listener qui écoute les changements
 de la taille de la fenêtre dans un composant.
 
-Car uniquement le bouton a besoin de savoir quand la taille de la fenêtre change.
+Car uniquement le bouton a besoin de savoir quand la taille de la fenêtre change. Pas notre composant `NameInput`.
 
 💌 Tu apprends à correctement séparer ton code pour éviter de ralentir ta page.
 
-## Solution 6 - EXPLICATION DU HOOKS FLOW
+## Solution 7 - EXPLICATION DU HOOKS FLOW
 
-⚠️ Ceci n'est pas un exercise. Tu peux directement regarder la vidéo solution.
+⚠️ Ceci n'est pas un exercise. Tu peux directement regarder la vidéo solution. ⚠️

@@ -1,25 +1,28 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-const getDefaultName = (key, defaultValue) => {
-  return JSON.parse(localStorage.getItem(key)) || defaultValue;
+const getInitialName = (key, defaultValue) => {
+  const storageItem = localStorage.getItem(key);
+  if (!storageItem) {
+    return defaultValue;
+  }
+
+  return JSON.parse(localStorage.getItem(key));
 };
 
-const Hello = ({ key, defaultValue }) => {
-  const [name, setName] = useState(() => getDefaultName(key, defaultValue));
+const NAME_KEY = 'name';
+
+const NameInput = ({ defaultValue }) => {
+  const [name, setName] = useState(() => getInitialName(NAME_KEY, defaultValue));
 
   useEffect(() => {
     // console.log('Set item in localStorage');
-    localStorage.setItem(key, JSON.stringify(name));
-  }, [key, name]);
+    localStorage.setItem(NAME_KEY, JSON.stringify(name));
+  }, [name]);
 
   return (
     <div>
       Name
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
     </div>
   );
 };
@@ -30,7 +33,7 @@ const App = () => {
   return (
     <div className="vertical-stack">
       <button onClick={() => setCounter(counter + 1)}>{counter}</button>
-      <Hello key="name" defaultValue="" />
+      <NameInput defaultValue="" />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const getDefaultName = (key, defaultValue) => {
   return JSON.parse(localStorage.getItem(key)) || defaultValue;
@@ -7,33 +7,32 @@ const getDefaultName = (key, defaultValue) => {
 const useStickyState = (key, defaultValue) => {
   const [state, setState] = useState(() => getDefaultName(key, defaultValue));
 
-  const setValue = (value) => {
-    if (typeof value === "function") {
+  const setValue = (newValue) => {
+    // J'undo ce changement pour la suite !
+    if (typeof newValue === 'function') {
       setState((prev) => {
-        const newValue = value(prev);
-        localStorage.setItem(key, JSON.stringify(newValue));
-        return newValue;
+        const computedNewValue = computedNewValue(prev);
+        localStorage.setItem(key, JSON.stringify(computedNewValue));
+        return computedNewValue;
       });
     } else {
-      localStorage.setItem(key, JSON.stringify(value));
-      setState(value);
+      localStorage.setItem(key, JSON.stringify(newValue));
+      setState(newValue);
     }
   };
 
   return [state, setValue];
 };
 
-const Hello = ({ key, defaultValue }) => {
-  const [name, setName] = useStickyState(key, defaultValue);
+const NAME_KEY = 'name';
+
+const NameInput = ({ defaultValue }) => {
+  const [name, setName] = useStickyState(NAME_KEY, defaultValue);
 
   return (
     <div>
       Name
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
     </div>
   );
 };
@@ -44,7 +43,7 @@ const App = () => {
   return (
     <div className="vertical-stack">
       <button onClick={() => setCounter(counter + 1)}>{counter}</button>
-      <Hello key="name" defaultValue="" />
+      <NameInput defaultValue="" />
     </div>
   );
 };

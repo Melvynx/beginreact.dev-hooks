@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const getDefaultName = (key, defaultValue) => {
   return JSON.parse(localStorage.getItem(key)) || defaultValue;
@@ -15,17 +15,15 @@ const useStickyState = (key, defaultValue) => {
   return [state, setValue];
 };
 
-const Hello = ({ key, defaultValue }) => {
-  const [name, setName] = useStickyState(key, defaultValue);
+const NAME_KEY = 'name';
+
+const NameInput = ({ defaultValue }) => {
+  const [name, setName] = useStickyState(NAME_KEY, defaultValue);
 
   return (
     <div>
       Name
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
     </div>
   );
 };
@@ -35,21 +33,20 @@ const App = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      // console.log('Resize 2.5');
       // setCounter(counter + 1);
       setCounter((prev) => prev + 1);
     };
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
   return (
     <div>
       <button onClick={() => setCounter(counter + 1)}>{counter}</button>
-      <Hello key="name" defaultValue="" />
+      <NameInput defaultValue="" />
     </div>
   );
 };

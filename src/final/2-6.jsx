@@ -1,52 +1,56 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-const EffectExample = () => {
-  const [count, setCount] = useState(0);
+const getDefaultName = (key, defaultValue) => {
+  return JSON.parse(localStorage.getItem(key)) || defaultValue;
+};
 
-  useEffect(() => {
-    console.log(`%c Run Effects ${count}`, "color: green");
-    return () => {
-      console.log(`%c Cleanup Effects ${count}`, "color: red");
-    };
-  }, [count]);
+const useStickyState = (key, defaultValue) => {
+  const [state, setState] = useState(() => getDefaultName(key, defaultValue));
 
-  useLayoutEffect(() => {
-    console.log(
-      `%c Run LayoutEffects ${count}`,
-      "color: green; background: black"
-    );
-    return () => {
-      console.log(
-        `%c Cleanup LayoutEffects ${count}`,
-        "color: red; background: black"
-      );
-    };
-  }, [count]);
+  const setValue = (value) => {
+    localStorage.setItem(key, JSON.stringify(value));
+    setState(value);
+  };
 
-  useEffect(() => {
-    console.log("%c Component Mount", "color: blue");
-    return () => {
-      console.log("%c Component Unmount", "color: red");
-    };
-  }, []);
+  return [state, setValue];
+};
+
+const NAME_KEY = 'name';
+
+const NameInput = ({ defaultValue }) => {
+  const [name, setName] = useStickyState(NAME_KEY, defaultValue);
 
   return (
     <div>
-      <button onClick={() => setCount((p) => p + 1)}>
-        You clicked {count} times
-      </button>
+      Name
+      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
     </div>
   );
 };
 
-const App = () => {
-  const [mount, setMount] = useState(false);
+// Demo avec le Profiler React
+const Counter = () => {
+  const [counter, setCounter] = useState(0);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setCounter((prev) => prev + 1);
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  return <button onClick={() => setCounter(counter + 1)}>{counter}</button>;
+};
+
+const App = () => {
   return (
     <div>
-      <button onClick={() => setMount(true)}>Mount</button>
-      <button onClick={() => setMount(false)}>Unmount</button>
-      <div style={{ padding: 16 }}>{mount && <EffectExample />}</div>
+      <Counter />
+      <NameInput defaultValue="" />
     </div>
   );
 };

@@ -21,7 +21,7 @@ En faite useState est une version limitée de useReducer, regarde :
 ```js
 const reducer = (prevValue, newValue) => {
   // On peut aussi passé une fonction dans le `setState`
-  if (typeof newValue === "function") {
+  if (typeof newValue === 'function') {
     return newValue(prevValue);
   }
   return newValue;
@@ -44,7 +44,7 @@ Quand tu cliques sur le compteur, il doit s'incrémenter de 1.
 
 💌 Tu apprends l'usage le plus basique du `useReducer`.
 
-## Exercise 2 - Bouton moins !
+## Extra 2 - Bouton moins !
 
 Maintenant ajoute un deuxième button : le button moins !
 
@@ -57,9 +57,9 @@ s'adapte à l'action qui est passé en paramètre.
 
 ```js
 switch (action) {
-  case "increment":
+  case 'increment':
   // ...
-  case "decrement":
+  case 'decrement':
   // ...
   default:
   // ...
@@ -68,7 +68,7 @@ switch (action) {
 
 - 💌 Tu apprends à gérer un reducer en fonction d'une action !
 
-## Exercise 3 - Refactor et reset
+## Extra 3 - Refactor et reset
 
 Pour cette exercise 3 choses :
 
@@ -80,7 +80,7 @@ Pour cette exercise 3 choses :
 
 ```js
 const Actions = {
-  INCREMENT: "increment",
+  INCREMENT: 'increment',
 };
 ```
 
@@ -89,7 +89,7 @@ const Actions = {
 
 PS : TypeScript résout bien mieux ce problème.
 
-## Exercise 4 - De 5 en 5 !
+## Extra 4 - De 5 en 5 !
 
 Ajoute deux nouveaux boutons :
 
