@@ -1,10 +1,10 @@
-import { useState } from "react";
-import styles from "./Exercise4.module.css";
+import { useState } from 'react';
+import styles from './Exercise4.module.css';
 
 // User database
 const users = [
-  { username: "Admin", password: "Admin", isAdmin: true },
-  { username: "User", password: "User", isAdmin: false },
+  { username: 'Admin', password: 'Admin', isAdmin: true },
+  { username: 'User', password: 'User', isAdmin: false },
 ];
 
 // 🦁Crée un context `UserContext`
@@ -24,7 +24,7 @@ const App = () => {
     if (user) {
       setCurrentUser(user);
     } else {
-      alert("Invalid username or password");
+      alert('Invalid username or password');
     }
   };
 

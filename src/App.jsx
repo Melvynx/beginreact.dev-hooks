@@ -3,8 +3,8 @@
  * This is the main entry point of the application.
  */
 
-import { BrowserRouter } from "react-router-dom";
-import { Router } from "./chore/Router";
+import { BrowserRouter } from 'react-router-dom';
+import { Router } from './chore/Router';
 
 const App = () => {
   return (

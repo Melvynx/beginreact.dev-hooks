@@ -3,7 +3,7 @@
 
 const App = () => {
   // 🦁 Remplace le name par un state
-  let name = "";
+  let name = '';
 
   const handleChange = (event) => {
     // 🦁 Update le state avec la nouvelle valeur
@@ -18,7 +18,7 @@ const App = () => {
         // 🦁 Ajoute la valeur
         // 🦁 Ajoute le onChange pour update le state quand la valeur change
       />
-      <p>{name ? `Hello ${name}` : "Write your name"}</p>
+      <p>{name ? `Hello ${name}` : 'Write your name'}</p>
     </div>
   );
 };

@@ -12,7 +12,9 @@ const getInitialName = (key, defaultValue) => {
 const NAME_KEY = 'name';
 
 const NameInput = ({ defaultValue }) => {
-  const [name, setName] = useState(() => getInitialName(NAME_KEY, defaultValue));
+  const [name, setName] = useState(() =>
+    getInitialName(NAME_KEY, defaultValue)
+  );
 
   useEffect(() => {
     // console.log('Set item in localStorage');
@@ -20,10 +22,14 @@ const NameInput = ({ defaultValue }) => {
   }, [name]);
 
   return (
-    <div>
+    <label className="textfield">
       Name
-      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-    </div>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+    </label>
   );
 };
 

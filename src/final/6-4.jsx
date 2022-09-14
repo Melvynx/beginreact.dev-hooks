@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { ExpensiveComponent } from "../toolbox/components/ExpensiveComponent.jsx";
+import { useState } from 'react';
+import { ExpensiveComponent } from '../toolbox/components/ExpensiveComponent.jsx';
 
 const SmallComponentTop = () => {
   return (
-    <div style={{ width: "100px", height: "100px" }}>SmallComponentLeft</div>
+    <div style={{ width: '100px', height: '100px' }}>SmallComponentLeft</div>
   );
 };
 
@@ -12,12 +12,12 @@ const ComponentScrollCounter = ({ children, top }) => {
 
   return (
     <div
-      style={{ overflowY: "scroll", height: "500px", paddingTop: "200px" }}
+      style={{ overflowY: 'scroll', height: '500px', paddingTop: '200px' }}
       onScroll={(e) => {
         setScroll(e.target.scrollTop);
       }}
     >
-      <div style={{ height: "800px" }}>
+      <div style={{ height: '800px' }}>
         {top}
         <p>Hey, you scroll {scroll}</p>
         {children}

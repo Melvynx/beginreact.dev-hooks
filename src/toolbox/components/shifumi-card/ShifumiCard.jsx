@@ -1,10 +1,10 @@
-import styles from "./ShifumiCard.module.css";
-import clsx from "clsx";
+import styles from './ShifumiCard.module.css';
+import clsx from 'clsx';
 
 const Icons = {
-  paper: "✋",
-  rock: "✊",
-  scissors: "✌️",
+  paper: '✋',
+  rock: '✊',
+  scissors: '✌️',
 };
 
 export const ShifumiCard = ({ type, className, style }) => {

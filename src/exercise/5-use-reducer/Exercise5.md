@@ -36,6 +36,9 @@ const useState = (initalValue) => {
 Donc finalement ce reduce est une sorte de `super useState` pour
 réaliser tous tes rêves et tes désirs.
 
+Et à vrai dire, `useState` est simplement une configuration par défaut de `useReducer`.
+[📖 React hooks system](https://the-guild.dev/blog/react-hooks-system)
+
 ## Exercise 1
 
 Nous avons un counter qui ne fonctionne pas pour l'instant, fait

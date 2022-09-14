@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const App = () => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
 
   const handleChange = (event) => {
     setName(event.target.value);
@@ -15,7 +15,7 @@ const App = () => {
         value={name}
         onChange={handleChange}
       />
-      <p>{name ? `Hello ${name}` : "Write your name"}</p>
+      <p>{name ? `Hello ${name}` : 'Write your name'}</p>
     </div>
   );
 };

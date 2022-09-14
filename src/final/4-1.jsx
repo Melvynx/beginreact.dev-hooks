@@ -1,10 +1,10 @@
-import { createContext, useContext, useState } from "react";
-import styles from "../exercise/4-use-context/Exercise4.module.css";
+import { createContext, useContext, useState } from 'react';
+import styles from '../exercise/4-use-context/Exercise4.module.css';
 
 // Fake database
 const users = [
-  { username: "Admin", password: "Admin", isAdmin: true },
-  { username: "User", password: "User", isAdmin: false },
+  { username: 'Admin', password: 'Admin', isAdmin: true },
+  { username: 'User', password: 'User', isAdmin: false },
 ];
 
 const NavBar = () => {
@@ -83,7 +83,7 @@ const UserContext = createContext({ user: null });
 const useUserContext = () => {
   const context = useContext(UserContext);
   if (context === undefined) {
-    throw new Error("useUserContext must be used within a UserContextProvider");
+    throw new Error('useUserContext must be used within a UserContextProvider');
   }
   return context;
 };
@@ -98,7 +98,7 @@ const App = () => {
     if (user) {
       setUser(user);
     } else {
-      alert("Invalid username or password");
+      alert('Invalid username or password');
     }
   };
 

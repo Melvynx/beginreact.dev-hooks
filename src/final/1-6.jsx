@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const Todos = ({ todos }) => (
   <ul>
@@ -38,7 +38,7 @@ const useTodos = (defaultTodos = []) => {
 };
 
 const TodoList = () => {
-  const { todos, addTodo } = useTodos(["Learn React", "Learn React Hooks"]);
+  const { todos, addTodo } = useTodos(['Learn React', 'Learn React Hooks']);
   console.log(todos);
 
   return (
@@ -83,8 +83,8 @@ const FavoriteAnimal = ({ favoriteAnimal, setFavoriteAnimal }) => {
 };
 
 const UserAnimalForm = () => {
-  const [username, setUsername] = useState("");
-  const [favoriteAnimal, setFavoriteAnimal] = useState("Dog");
+  const [username, setUsername] = useState('');
+  const [favoriteAnimal, setFavoriteAnimal] = useState('Dog');
 
   return (
     <div className="vertical-stack">

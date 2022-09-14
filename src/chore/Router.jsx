@@ -4,11 +4,11 @@
  * This file is created to make the exercises friendly. Any update can break the exercises.
  */
 
-import React from "react";
-import { Navigate, Route, Routes } from "react-router";
-import { Link } from "react-router-dom";
-import { EXERCISES } from "./exercises";
-import { ExerciseProse } from "./ExerciseProse.jsx";
+import React from 'react';
+import { Navigate, Route, Routes } from 'react-router';
+import { Link } from 'react-router-dom';
+import { EXERCISES } from './exercises';
+import { ExerciseProse } from './ExerciseProse.jsx';
 
 export const Router = () => {
   return (

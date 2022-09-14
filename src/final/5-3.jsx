@@ -1,9 +1,9 @@
-import { useReducer } from "react";
+import { useReducer } from 'react';
 
 const CountReducerAction = {
-  INCREMENT: "increment",
-  DECREMENT: "decrement",
-  RESET: "reset",
+  INCREMENT: 'increment',
+  DECREMENT: 'decrement',
+  RESET: 'reset',
 };
 
 const reducer = (state, action) => {
@@ -15,7 +15,7 @@ const reducer = (state, action) => {
     case CountReducerAction.RESET:
       return 0;
     default:
-      throw new Error("Unexpected action");
+      throw new Error('Unexpected action');
   }
 };
 

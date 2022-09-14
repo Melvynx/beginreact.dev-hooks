@@ -13,7 +13,12 @@ const App = () => {
   return (
     <div className="vertical-stack">
       <div>
-        <input type="text" placeholder="Name" value={name} onChange={handleChange} />
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={handleChange}
+        />
         <input
           type="checkbox"
           checked={isNameReversed}
@@ -36,7 +41,9 @@ const Name = ({ name, isNameReversed }) => {
     return <p>Write your name</p>;
   }
 
-  const computedName = isNameReversed ? name.split('').reverse().join('') : name;
+  const computedName = isNameReversed
+    ? name.split('').reverse().join('')
+    : name;
 
   return <p>Hello {computedName}</p>;
 };

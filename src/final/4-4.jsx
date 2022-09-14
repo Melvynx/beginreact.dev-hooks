@@ -1,11 +1,11 @@
-import { useState } from "react";
-import styles from "../exercise/4-use-context/Exercise4.module.css";
-import { createContext, useContextSelector } from "use-context-selector";
+import { useState } from 'react';
+import styles from '../exercise/4-use-context/Exercise4.module.css';
+import { createContext, useContextSelector } from 'use-context-selector';
 
 // Fake database
 const users = [
-  { username: "Admin", password: "Admin", isAdmin: true },
-  { username: "User", password: "User", isAdmin: false },
+  { username: 'Admin', password: 'Admin', isAdmin: true },
+  { username: 'User', password: 'User', isAdmin: false },
 ];
 
 // User
@@ -25,7 +25,7 @@ const UserContextProvider = ({ children }) => {
     if (user) {
       setUser(user);
     } else {
-      alert("Invalid username or password");
+      alert('Invalid username or password');
     }
   };
 

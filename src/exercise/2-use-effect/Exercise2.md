@@ -6,12 +6,12 @@ Il va gérer le life cycle de ton application.
 
 Mais c'est quoi le life-cycle ?
 
-Voici un graph pour le comprendre :
+Voici un graphique pour le comprendre :
 
 <img src="../../../public/assets/react-hooks-flow.png" alt="react hooks flow" />
 
 Dans la vidéo Intro, je t'explique en détail ce graphique. Mais dans l'extra 6
-on vas comprendre sur le terrain comment ça fonctionne.
+on va comprendre sur le terrain comment ça fonctionne.
 
 `useEffect` permet de savoir :
 
@@ -24,28 +24,31 @@ on vas comprendre sur le terrain comment ça fonctionne.
 
 Mais c'est quoi un `side effect` ?
 
-Il permet de garder ton composant synchroniser avec des système externe.
+Il permet de garder ton composant synchroniser avec des systèmes externe.
 (browser APIs ex: localStorage, third-party libraries, network, etc...)
 
-Pour update des states basée sur un autre state tu n'as pas besoin d'avoir de useEffect.
+Pour update des states basée sûr un autre state tu n'as pas besoin d'avoir de useEffect.
 
-## Exercise
+## Exercice
 
 Dans le composant `Hello`, on veut que le `name` soit garder dans le `localStorage`
 afin de ne pas le perdre quand on recharge la page.
 
-Pour ça écoute Lienx 🦁 dans le fichier Exercise.
+Pour ça écoute Lienx 🦁 dans le fichier Exercice.
+
+[📖 useEffect BETA](https://beta.reactjs.org/apis/react/useEffect)
+[📖 useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect)
 
 💌 Tu comprends l'utilisation basique du `useEffect`.
 
 ## Extra 2 - Optimisation
 
-Notre client a des problèmes, notre application récupère tout le temps la valeur
+Notre client rencontre des difficultés, notre application récupère tout le temps la valeur
 dans le localStorage (à chaque render).
 
 De plus, le code mis dans la defaultValue du useState est pas top top...
 
-Déplace cette logique dans une fonction `getInitialName` et utilise la dans le useState.
+Déplace cette logique dans une fonction `getInitialName` et utilise là dans le useState.
 
 Remplacer la valeur par défaut par une arrow function. (💡 `useState(() => ...)`)
 
@@ -54,25 +57,25 @@ la valeur par défaut.
 
 On comprendra dans la solution l'avantage de cette fonction !
 
-En plus il s'est rendu compte que quand on clique sur le Counter, le `useEffect`
-est appelé. Il faut que tu ajoutes des dépendances à notre `useEffect`
+En plus, il s'est rendu compte que quand on clique sur le Counter, le `useEffect`
+est appelé. Tu dois ajouter des dépendances à notre `useEffect`
 pour éviter de l'appeler à chaque render.
 
-Car on change l'item dans le local storage même quand ça sert à rien.
+Car on change l'item dans le local storage même quand ça ne sert à rien.
 
 💌 Tu comprends comment fonctionne l'initial value du `useState`.
 💌 Tu comprends l'utilité des dépendances dans le `useEffect`.
 
 ## Extra 3 - Refactor
 
-Déplace toute la logique qui concerne le state et le localStorage dans un custom hooks.
+Déplace toute la logique qui concerne le state et le local storage dans un custom hooks.
 
 Pour ça, il te suffit de créer une fonction qui se nomme `useStickyState` et de
 déplacer la logique.
 
-`useStickyState` va retourné : `[state, setState]` pour garder la même API que `useState`.
+`useStickyState` va retourner : `[state, setState]` pour garder la même API que `useState`.
 
-💌 Tu comprends comment fonctionne les custom hooks.
+💌 Tu comprends comment fonctionnent les custom hooks.
 
 ## Extra 4 - Remplacer le useEffect
 
@@ -81,14 +84,14 @@ Le `useEffect` est devenue inutile, car il permet de tracker un side effect.
 Hors ici ce n'est plus un side effect car on sait exactement quand notre state est
 modifié.
 
-Pour gérer le localStorage on va créer une fonction `setValue` dans laquelle on va
-changer le state, mais aussi update le localStorage.
+Pour gérer le local storage, on va créer une fonction `setValue` dans laquelle on va
+changer le state, mais aussi update le local storage.
 
 `setValue` est une fonction à l'intérieur de `useStickyState`. Dans la valeur de retours
 tu peux remplacer `setState` par `setValue` pour garder la même API. (attention `setState`
 peut prendre une fonction en paramètre, il faut gérer ce cas dans `setValue`)
 
-⚠️ Le `useEffect` à sa place ici, je fais cette exercise pour te rendre
+⚠️ Le `useEffect` à sa place ici, je fais cet exercice pour te rendre
 compte des possibilités et de comprendre comment tu peux remplacer le `useEffect`
 
 💌 Tu comprends que l'usage du `useEffect` peut parfois être remplacé.
@@ -113,17 +116,17 @@ useEffect(() => {
 });
 ```
 
-⚠️ Cette exercise est un défi. Si tu le réussis facilement tant mieux, sinon regarde
+⚠️ Cet exercice est un défi. Si tu le réussis facilement tant mieux, sinon regarde
 la vidéo de solution.
 
 💌 Tu apprends l'utilisation de la clean up function.
 
 ## Extra 6 - Refactor
 
-Maintenant notre composant App rerender quand la fenêtre change. C'est une très
+Maintenant notre composant App **entière** rerender quand la fenêtre change. C'est une très
 mauvaise pratique, car ça ralenti notre navigateur.
 
-La solution et de déplacer la logique du Counter et du listener qui écoute les changements
+La solution est de déplacer la logique du Counter et du listener qui écoute les changements
 de la taille de la fenêtre dans un composant.
 
 Car uniquement le bouton a besoin de savoir quand la taille de la fenêtre change. Pas notre composant `NameInput`.
@@ -133,3 +136,11 @@ Car uniquement le bouton a besoin de savoir quand la taille de la fenêtre chang
 ## Solution 7 - EXPLICATION DU HOOKS FLOW
 
 ⚠️ Ceci n'est pas un exercise. Tu peux directement regarder la vidéo solution. ⚠️
+
+## Solution 8 - Behind the Hooks
+
+⚠️ Ceci n'est pas un exercise. Tu peux directement regarder la vidéo solution. ⚠️
+
+[📖 Behind the Hooks](https://reactjs.org/docs/hooks-faq.html#how-does-react-associate-hook-calls-with-components)
+
+[📖 React hooks system](https://the-guild.dev/blog/react-hooks-system)

@@ -55,7 +55,7 @@
   max-width: 65ch;
 }
 
-.prose [class~="lead"] {
+.prose [class~='lead'] {
   font-size: 1.25em;
   line-height: 1.6;
   margin-top: 1.2em;
@@ -67,7 +67,7 @@
 }
 
 .prose a::before {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -0.3em;
   left: 0;
@@ -84,7 +84,7 @@
 
 .prose strong {
   font-weight: 600;
-  font-family: "Work Sans", sans-serif;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .prose ol {
@@ -101,7 +101,7 @@
 }
 
 .prose ol > li::before {
-  content: counter(list-counter) ".";
+  content: counter(list-counter) '.';
   position: absolute;
   font-weight: 400;
 }
@@ -112,7 +112,7 @@
 }
 
 .prose ul > li::before {
-  content: "";
+  content: '';
   position: absolute;
   border-radius: 50%;
   width: 0.375em;
@@ -132,7 +132,7 @@
   font-style: italic;
   color: var(--primary);
   border-left-width: 0.25rem;
-  quotes: "\201C""\201D""\2018""\2019";
+  quotes: '\201C''\201D''\2018''\2019';
   margin-left: 0;
   padding-left: 0.5em;
   border-left: 2px solid var(--primary);
@@ -152,7 +152,7 @@
   margin-top: 1.5em;
   margin-bottom: 0.8888889em;
   line-height: 1.1111111;
-  font-family: "Work Sans", sans-serif;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .prose h2 {
@@ -161,7 +161,7 @@
   margin-top: 2rem;
   margin-bottom: 1em;
   line-height: 1.3333333;
-  font-family: "Work Sans", sans-serif;
+  font-family: 'Work Sans', sans-serif;
   text-decoration: underline dotted;
 }
 
@@ -192,11 +192,11 @@
 }
 
 .prose code::before {
-  content: "`";
+  content: '`';
 }
 
 .prose code::after {
-  content: "`";
+  content: '`';
 }
 
 .prose pre {
@@ -225,11 +225,11 @@
 }
 
 .prose pre code::before {
-  content: "";
+  content: '';
 }
 
 .prose pre code::after {
-  content: "";
+  content: '';
 }
 
 .prose table {

@@ -14,10 +14,14 @@ const NameInput = ({ defaultValue }) => {
   // 💡 localStorage.setItem(key, JSON.stringify(name));
 
   return (
-    <div>
+    <label className="textfield">
       Name
-      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-    </div>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+    </label>
   );
 };
 

@@ -1,5 +1,5 @@
-import { createContext, memo, useContext, useReducer, useState } from "react";
-import { useOnRenderStyle } from "../../toolbox/hooks/useOnRenderStyle.jsx";
+import { createContext, memo, useContext, useReducer, useState } from 'react';
+import { useOnRenderStyle } from '../../toolbox/hooks/useOnRenderStyle.jsx';
 
 const Header = () => {
   const ref = useOnRenderStyle();

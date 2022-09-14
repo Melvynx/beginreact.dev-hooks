@@ -21,10 +21,14 @@ const NameInput = ({ defaultValue }) => {
   const [name, setName] = useStickyState(NAME_KEY, defaultValue);
 
   return (
-    <div>
+    <label className="textfield">
       Name
-      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-    </div>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+    </label>
   );
 };
 

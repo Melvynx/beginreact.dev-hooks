@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useOnRenderStyle } from "../../toolbox/hooks/useOnRenderStyle.jsx";
+import { useState } from 'react';
+import { useOnRenderStyle } from '../../toolbox/hooks/useOnRenderStyle.jsx';
 
 const User = ({ user }) => {
   return (
@@ -29,7 +29,7 @@ const Age = ({ age }) => {
 };
 
 const App = () => {
-  const [user, setUser] = useState({ name: "Jean", age: "14" });
+  const [user, setUser] = useState({ name: 'Jean', age: '14' });
 
   return (
     <div>

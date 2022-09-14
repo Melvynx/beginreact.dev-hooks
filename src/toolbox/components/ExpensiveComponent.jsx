@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { useOnRenderStyle } from "../hooks/useOnRenderStyle.jsx";
+import { useEffect, useRef, useState } from 'react';
+import { useOnRenderStyle } from '../hooks/useOnRenderStyle.jsx';
 
 export const ExpensiveComponent = () => {
   const [numbers, setNumbers] = useState([]);
@@ -25,12 +25,12 @@ export const ExpensiveComponent = () => {
   }, []);
 
   return (
-    <div ref={ref} style={{ width: "500px", overflowX: "scroll" }}>
+    <div ref={ref} style={{ width: '500px', overflowX: 'scroll' }}>
       <h1>BigComposant</h1>
       <p>The big composant of the website !</p>
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
         {numbers.map((numbersLine, index) => (
-          <div key={index} style={{ display: "flex" }}>
+          <div key={index} style={{ display: 'flex' }}>
             {numbersLine.map((number, index) => (
               <div
                 key={index}

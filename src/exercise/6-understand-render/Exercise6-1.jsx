@@ -1,5 +1,5 @@
-import { useReducer } from "react";
-import { useOnRenderStyle } from "../../toolbox/hooks/useOnRenderStyle.jsx";
+import { useReducer } from 'react';
+import { useOnRenderStyle } from '../../toolbox/hooks/useOnRenderStyle.jsx';
 
 const Header = () => {
   const ref = useOnRenderStyle();

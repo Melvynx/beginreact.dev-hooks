@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react';
 
 const useDebounce = (callback, time) => {
   const debounce = useRef(null);
@@ -39,7 +39,7 @@ const App = () => {
       />
       {result ? (
         <div style={{ padding: 16 }}>
-          The age for <b>{result.name}</b> is <b>{result.age}</b> and there is{" "}
+          The age for <b>{result.name}</b> is <b>{result.age}</b> and there is{' '}
           <b>{result.count}</b> people with this name.
         </div>
       ) : null}

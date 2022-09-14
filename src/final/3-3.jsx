@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
 const useDebounce = (callback, time) => {
   const debounce = useRef(null);
@@ -50,11 +50,11 @@ const App = () => {
       />
       {result ? (
         <div style={{ padding: 16 }}>
-          The age for <b>{result.name}</b> is <b>{result.age}</b> and there is{" "}
+          The age for <b>{result.name}</b> is <b>{result.age}</b> and there is{' '}
           <b>{result.count}</b> people with this name.
         </div>
       ) : null}
-      <div style={{ color: "red", padding: 16 }}>
+      <div style={{ color: 'red', padding: 16 }}>
         The component render ${renderCount.current} times
       </div>
     </div>
