@@ -147,8 +147,8 @@ Car uniquement le bouton a besoin de savoir quand la taille de la fenêtre chang
 
 Notre bouton s’incrémente lorsque la page grandit.
 
-Rajoute une checkbox et fait en sorte que le bouton s'incrémente
-seulement quand la checkbox est cochée.
+Dans le composant `Counter`, rajoute une checkbox et fait en sorte
+que le bouton s'incrémente seulement quand la checkbox est cochée.
 
 Il faudra rajouter une condition pour le `useEffect`.
 
