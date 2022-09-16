@@ -10,7 +10,7 @@ Voici un graphique pour le comprendre :
 
 <img src="../../../public/assets/react-hooks-flow.png" alt="react hooks flow" />
 
-Dans la vidéo Intro, je t'explique en détail ce graphique. Mais dans l'extra 6
+Dans la vidéo Intro, je t'explique un peu ce graphique. Mais dans l'extra 7
 on va comprendre sur le terrain comment ça fonctionne.
 
 `useEffect` permet de savoir :
@@ -19,6 +19,15 @@ on va comprendre sur le terrain comment ça fonctionne.
 - quand le composant est monté (`onMount`)
 - quand le composant est démonté (`onUnmount`)
 - quand le composant change (`onChange`)
+
+```js
+useEffect(() => {
+  console.log('create');
+  return () => {
+    console.log('destroy');
+  };
+}, [dependencies]);
+```
 
 ⚠️ Commet son nom l'indique, il permet de gérer les `side effect`.
 
@@ -29,15 +38,16 @@ Il permet de garder ton composant synchroniser avec des systèmes externe.
 
 Pour update des states basée sûr un autre state tu n'as pas besoin d'avoir de useEffect.
 
+[📖 useEffect BETA](https://beta.reactjs.org/apis/react/useEffect)
+
+[📖 useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect)
+
 ## Exercice
 
 Dans le composant `Hello`, on veut que le `name` soit garder dans le `localStorage`
 afin de ne pas le perdre quand on recharge la page.
 
 Pour ça écoute Lienx 🦁 dans le fichier Exercice.
-
-[📖 useEffect BETA](https://beta.reactjs.org/apis/react/useEffect)
-[📖 useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect)
 
 💌 Tu comprends l'utilisation basique du `useEffect`.
 
@@ -133,14 +143,19 @@ Car uniquement le bouton a besoin de savoir quand la taille de la fenêtre chang
 
 💌 Tu apprends à correctement séparer ton code pour éviter de ralentir ta page.
 
-## Solution 7 - EXPLICATION DU HOOKS FLOW
+## Extra 7 - Pas tout le temps !
+
+Notre bouton s’incrémente lorsque la page grandit.
+
+Rajoute une checkbox et fait en sorte que le bouton s'incrémente
+seulement quand la checkbox est cochée.
+
+Il faudra rajouter une condition pour le `useEffect`.
+
+💡 Utilise `useState` !
+
+💌 Tu comprends comment lancer des effets conditionnellement.
+
+## Solution 8 - EXPLICATION DU HOOKS FLOW
 
 ⚠️ Ceci n'est pas un exercise. Tu peux directement regarder la vidéo solution. ⚠️
-
-## Solution 8 - Behind the Hooks
-
-⚠️ Ceci n'est pas un exercise. Tu peux directement regarder la vidéo solution. ⚠️
-
-[📖 Behind the Hooks](https://reactjs.org/docs/hooks-faq.html#how-does-react-associate-hook-calls-with-components)
-
-[📖 React hooks system](https://the-guild.dev/blog/react-hooks-system)

@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-const getDefaultName = (key, defaultValue) => {
+const getInitialName = (key, defaultValue) => {
   return JSON.parse(localStorage.getItem(key)) || defaultValue;
 };
 
 const useStickyState = (key, defaultValue) => {
-  const [state, setState] = useState(() => getDefaultName(key, defaultValue));
+  const [state, setState] = useState(() => getInitialName(key, defaultValue));
 
   const setValue = (newValue) => {
     // J'undo ce changement pour la suite !
