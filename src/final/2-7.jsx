@@ -1,52 +1,79 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const EffectExample = () => {
-  const [count, setCount] = useState(0);
+const getInitialName = (key, defaultValue) => {
+  const storedItem = localStorage.getItem(key);
 
-  useEffect(() => {
-    console.log(`%c Run Effects ${count}`, 'color: green');
-    return () => {
-      console.log(`%c Cleanup Effects ${count}`, 'color: red');
-    };
-  }, [count]);
+  if (!storedItem) {
+    return defaultValue;
+  }
 
-  useLayoutEffect(() => {
-    console.log(
-      `%c Run LayoutEffects ${count}`,
-      'color: green; background: black'
-    );
-    return () => {
-      console.log(
-        `%c Cleanup LayoutEffects ${count}`,
-        'color: red; background: black'
-      );
-    };
-  }, [count]);
+  try {
+    return JSON.parse(storedItem);
+  } catch (e) {
+    localStorage.removeItem(key);
+    return defaultValue;
+  }
+};
+
+const useStickyState = (key, defaultValue) => {
+  const [state, setState] = useState(() => getInitialName(key, defaultValue));
 
   useEffect(() => {
-    console.log('%c Component Mount', 'color: blue');
+    localStorage.setItem(key, JSON.stringify(state));
+  }, [state, key]);
+
+  return [state, setState];
+};
+
+const NAME_KEY = 'name';
+
+const NameInput = ({ defaultValue }) => {
+  const [name, setName] = useStickyState(NAME_KEY, defaultValue);
+
+  return (
+    <label className="textfield">
+      Name
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+    </label>
+  );
+};
+
+const Counter = () => {
+  const [counter, setCounter] = useState(0);
+  const [isResizeIncrement, setIsResizeIncrement] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setCounter((curr) => curr + 1);
+    };
+
+    window.addEventListener('resize', handleResize);
     return () => {
-      console.log('%c Component Unmount', 'color: red');
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
   return (
-    <div>
-      <button onClick={() => setCount((p) => p + 1)}>
-        You clicked {count} times
-      </button>
-    </div>
+    <>
+      <input
+        checked={isResizeIncrement}
+        onChange={(e) => setIsResizeIncrement(e.target.checked)}
+        type="checkbox"
+      />
+      <button onClick={() => setCounter((curr) => curr + 1)}>{counter}</button>
+    </>
   );
 };
 
 const App = () => {
-  const [mount, setMount] = useState(false);
-
   return (
-    <div>
-      <button onClick={() => setMount(true)}>Mount</button>
-      <button onClick={() => setMount(false)}>Unmount</button>
-      <div style={{ padding: 16 }}>{mount && <EffectExample />}</div>
+    <div className="vertical-stack">
+      <Counter />
+      <NameInput defaultValue="" />
     </div>
   );
 };

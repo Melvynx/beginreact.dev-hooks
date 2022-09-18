@@ -37,6 +37,8 @@ import Solution2Exercise3 from '../final/2-3';
 import Solution2Exercise4 from '../final/2-4';
 import Solution2Exercise5 from '../final/2-5';
 import Solution2Exercise6 from '../final/2-6';
+import Solution2Exercise7 from '../final/2-7';
+import Solution2Exercise8 from '../final/2-8';
 // ExerciseProse 3
 import Solution3Exercise1 from '../final/3-1';
 import Solution3Exercise2 from '../final/3-2';
@@ -86,6 +88,8 @@ export const EXERCISES = [
         <Solution2Exercise4 key={4} />,
         <Solution2Exercise5 key={5} />,
         <Solution2Exercise6 key={6} />,
+        <Solution2Exercise7 key={7} />,
+        <Solution2Exercise8 key={8} />,
       ],
     },
   },
