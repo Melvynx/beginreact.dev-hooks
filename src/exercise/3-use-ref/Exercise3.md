@@ -16,21 +16,21 @@ Ici, la valeur d'`input.current` c'est comme si tu faisais `document.querySelect
 
 [📖 useRef - Récupérer un élément du DOM](https://beta.reactjs.org/apis/useref#manipulating-the-dom-with-a-ref)
 
-Mais `useRef` a une deuxième utilité : pour [référencer des valeurs](https://beta.reactjs.org/apis/useref#referencing-a-value-with-a-ref)
+Mais `useRef` a une deuxième utilité : pour [📖 référencer des valeurs](https://beta.reactjs.org/apis/useref#referencing-a-value-with-a-ref)
 qui sont mémorisées entre les renders.
 
-C'est ce cas que l'on verra dans cette exercice.
+C'est ce cas que l'on verra dans cet exercice.
 
-[📖 Mon article sur useRef](https://codelynx.dev/posts/comment-utiliser-useref) (à lire aussi de ton cotés)
+[📖 Mon article sur useRef](https://codelynx.dev/posts/comment-utiliser-useref) (à lire aussi de ton coté)
 
 ## Exercise
 
-Nous avons une petite application qui lorsque tu rentres ton prénom, te dit : "l'âge de ton prénom".
+Nous avons une petite application qui, lorsque tu rentres ton prénom, te dit : "l'âge de <ton prénom>".
 
 Pour ce faire, on va utiliser une API qui se nomme [agify](https://agify.io/).
 
-Je te laisse check la documentation. Notre application à des inputs, et on veut
-que notre application affiche l'âge du prénom mis dans l'input. Comme si c'était
+Je te laisse check la documentation. Notre application a des inputs, et on veut
+que notre application affiche l'âge du prénom inscrit dans l'input. Comme si c'était
 une searchbar → pas de button submit.
 
 Tu écris → on fetch → on affiche la réponse.
@@ -39,26 +39,26 @@ Le problème, c'est que l'on ne veut pas fetch 10000x l'api. On souhaite le fair
 Comment savoir quand tu as fini d'écrire ?
 
 On va dire qu'à partir du moment où tu n'écris plus depuis **500ms**, c'est que
-tu as terminé d'écrire. À ce moment-là, on va fetch la nouvelle données.
+tu as terminé d'écrire. À ce moment-là, on va fetch la nouvelle donnée.
 
 En JavaScript, on appelle ce genre de fonctionnalité un **debounce**.
 
 [📖 Comprendre le debounce](https://css-tricks.com/debouncing-throttling-explained-examples/)
 
-Tu vas créer le hook `useDebounce` va prendre deux paramètres, la `callback` function
+Tu vas créer le hook `useDebounce` qui va prendre deux paramètres, la `callback` function
 ainsi que `time` en milliseconds.
 
-Il va retourner une fonction que l'on va nommer `onDebounce`. Les consignes sont dans l'exercise.
+Il va retourner une fonction que l'on va nommer `onDebounce`. Les consignes sont dans l'exercice.
 
-💌 Tu comprends comment stoker des valeurs qui n'influe pas le render dans des useRef
+💌 Tu comprends comment stoker des valeurs qui n'influent pas le render dans des useRef
 
 ## Extra 2
 
-Dans un but pédagogique, ajoute une `ref` nommé `inputRef` afin de récupérer
+Dans un but pédagogique, ajoute une `ref` nommée `inputRef` afin de récupérer
 la valeur de l'input.
 
 Remplace la logique de `value` dans notre fonction `onSearch` avec
-la valeur stock dans la `ref` `inputRef`.
+la valeur stockée dans la `ref` `inputRef`.
 
 💌 Tu comprends que la ref permet aussi de référencer un élément du DOM.
 
@@ -68,7 +68,7 @@ En utilisant ce que l'on a appris avec les render dans l'exercice sur les `useEf
 crée un hooks `useRenderCount` pour calculer le nombre de render qu'on fait subir
 à notre composant.
 
-💡 Crée un hooks `useRenderCount` avec une ref qui est incrémenté à chaque render.
+💡 Crée un hooks `useRenderCount` avec une ref qui est incrémentée à chaque render.
 
 💡 Tu peux ensuite afficher `ref.current` dans la vue pour voir le nombre de render.
 

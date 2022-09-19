@@ -1,16 +1,18 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 const useDebounce = (callback, time) => {
   // 🦁 Remplace cette variable par un `useRef`
-  // 💡timeout correspond à la référence de notre timeout.
+  // 💡 timeout correspond à la référence de notre timeout.
   //   Quand tu fais un setTimeout, il return une valeur que
   //   tu peux clear afin de l'annuler. https://developer.mozilla.org/fr/docs/Web/API/setTimeout#valeur_de_retour
   const timeout = null;
 
   const onDebounce = (...args) => {
-    // 🦁Annule le timeout https://developer.mozilla.org/en-US/docs/Web/API/clearTimeout
-    // 🦁Crée un nouveau timeout https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
-    // a la fin il doit appeler la callback avec les arguments et le temps est définie par le paramètre `time`
+    // 🦁 Annule le timeout https://developer.mozilla.org/en-US/docs/Web/API/clearTimeout
+    // ℹ️ Cette fonction sera appelée à chaque fois que l'user tape un caractère, on veut donc clear
+    //    le dernier timeout pour relancer un nouveau timeout.
+    // 🦁 Crée un nouveau timeout https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
+    //    a la fin il doit appeler la callback avec les arguments et le temps est défini par le paramètre `time`
   };
 
   return onDebounce;
@@ -23,8 +25,8 @@ const fetchAgeByName = (name) => {
 const App = () => {
   const [result, setResult] = useState(null);
 
-  // 🦁Wrap la function `onSearch` dans le hooks useDebounce
-  // 💡const onSearch = useDebounce((value) => {...}, 500);
+  // 🦁 Wrap la function `onSearch` dans le hooks useDebounce
+  // 💡 const onSearch = useDebounce((value) => {...}, 500);
   const onSearch = (value) => {
     fetchAgeByName(value).then((data) => {
       setResult(data);
