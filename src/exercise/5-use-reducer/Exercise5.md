@@ -2,21 +2,21 @@
 
 Voici un hooks totalement sous-coté.
 
-Dans cette exercise on va utiliser **toutes la puissance**. Il faut savoir que quand
+Dans cet exercice, on va utiliser **toute la puissance**. Il faut savoir que quand
 j'ai appris React c'est celui qui m'a pausé le plus problème. Je vais essayer
 de rendre son concept le plus simple possible.
 
 [📖 Doc de useReducer](https://beta.reactjs.org/apis/usereducer)
 
-![react hooks flow](../../../public/assets/use-reduce-flow.png)
+![use reduce flow](../../../public/assets/use-reduce-flow.png)
 
 _J'explique ce flow dans la vidéo d'intro._
 
 > C'est quoi la différence avec useState ?
 
-En faite useState est une version limitée de useReducer, regarde :
+`useState` est une version limitée de `useReducer`, regarde :
 
-(en acceptant que `initialValue` ne soit pas une fonction)
+(En acceptant que `initialValue` ne soit pas une fonction)
 
 ```js
 const reducer = (prevValue, newValue) => {
@@ -27,19 +27,20 @@ const reducer = (prevValue, newValue) => {
   return newValue;
 };
 
-const useState = (initalValue) => {
-  const [state, setState] = React.useReducer(reducer, initalValue);
+const useState = (initialValue) => {
+  const [state, setState] = React.useReducer(reducer, initialValue);
   return [state, setState];
 };
 ```
 
-Donc finalement ce reduce est une sorte de `super useState` pour
+Finalement ce reduce est une sorte de `super useState` pour
 réaliser tous tes rêves et tes désirs.
 
-Et à vrai dire, `useState` est simplement une configuration par défaut de `useReducer`.
+À vrai dire, `useState` est simplement une configuration par défaut de `useReducer`.
+
 [📖 React hooks system](https://the-guild.dev/blog/react-hooks-system)
 
-## Exercise 1
+## Exercice 1
 
 Nous avons un counter qui ne fonctionne pas pour l'instant, fait
 le fonctionner.
@@ -54,7 +55,7 @@ Maintenant ajoute un deuxième button : le button moins !
 Quand tu cliques dessus, il doit décrémenter de 1.
 
 🦁 Tu vas devoir modifier la fonction `reducer` pour qu'elle
-s'adapte à l'action qui est passé en paramètre.
+s'adapte à l'action qui est passée en paramètre.
 
 💡 Tips de code :
 
@@ -82,15 +83,16 @@ Pour cette exercise 3 choses :
 💡 Tips de code :
 
 ```js
-const Actions = {
+const REDUCER_ACTIONS = {
   INCREMENT: 'increment',
+  // ...
 };
 ```
 
-- 💌 Tu apprends à ajouté des actions qui ne se base par sur la valeur du state.
+- 💌 Tu apprends à ajouter des actions qui ne se basent pas sur la valeur du state.
 - 💌 Tu apprends à refactor ton code pour éviter des problèmes.
 
-PS : TypeScript résout bien mieux ce problème.
+PS : TypeScript résout bien mieux ce problème qu'avec une constante.
 
 ## Extra 4 - De 5 en 5 !
 
@@ -99,7 +101,7 @@ Ajoute deux nouveaux boutons :
 - `+5` qui increment de **5**
 - `-5` qui decrement de **5**
 
-Pour ça il ne faut pas rajouter de nouvelles actions, mais plutôt ajouté
+Pour ça ne rajoute pas de nouvelles actions, mais plutôt ajouté
 un paramètre à notre action.
 
 💡 Tips de code :
@@ -110,11 +112,13 @@ const reducer = (value, { action, value }) => {
 };
 ```
 
+💡 Il faut que tu refactor chaque appel à notre dispatch !
+
 💌 Tu apprends à ajouter 1 paramètre dans l'action.
 
 ## Bonus
 
-Tu veux aller encore plus loins ?
+Tu veux aller encore plus loin ?
 
 Tu peux rajouter un input pour `set` la value, avec une action set.
 

@@ -1,7 +1,7 @@
-import { useReducer } from 'react';
+// import { useReducer } from 'react';
 
 const reducer = (value, action) => {
-  // 🦁 Ici il faut que tu return la valeur incrémenté de 1
+  // 🦁 Return la valeur incrémenté de 1
 };
 
 const Counter = () => {

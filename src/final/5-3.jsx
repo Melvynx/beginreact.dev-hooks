@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 
-const CountReducerAction = {
+const REDUCER_ACTIONS = {
   INCREMENT: 'increment',
   DECREMENT: 'decrement',
   RESET: 'reset',
@@ -8,11 +8,11 @@ const CountReducerAction = {
 
 const reducer = (state, action) => {
   switch (action) {
-    case CountReducerAction.INCREMENT:
+    case REDUCER_ACTIONS.INCREMENT:
       return state + 1;
-    case CountReducerAction.DECREMENT:
+    case REDUCER_ACTIONS.DECREMENT:
       return state - 1;
-    case CountReducerAction.RESET:
+    case REDUCER_ACTIONS.RESET:
       return 0;
     default:
       throw new Error('Unexpected action');
@@ -24,11 +24,11 @@ const Counter = () => {
 
   return (
     <div>
-      <button onClick={() => dispatch(CountReducerAction.DECREMENT)}>-</button>
+      <button onClick={() => dispatch(REDUCER_ACTIONS.DECREMENT)}>-</button>
       <button>{count}</button>
-      <button onClick={() => dispatch(CountReducerAction.INCREMENT)}>+</button>
+      <button onClick={() => dispatch(REDUCER_ACTIONS.INCREMENT)}>+</button>
       <br />
-      <button onClick={() => dispatch(CountReducerAction.RESET)}>RESET</button>
+      <button onClick={() => dispatch(REDUCER_ACTIONS.RESET)}>RESET</button>
     </div>
   );
 };
