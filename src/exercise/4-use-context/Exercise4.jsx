@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './Exercise4.module.css';
+import styles from '../../styles/Exercise4.module.css';
 
 // User database
 const users = [
@@ -7,11 +7,11 @@ const users = [
   { username: 'User', password: 'User', isAdmin: false },
 ];
 
-// 🦁Crée un context `UserContext`
-// 💡const UserContext = React.createContext({ currentUser: null });
+// 🦁 Crée un context `UserContext`
+// 💡 const UserContext = React.createContext({ currentUser: null });
 
-// 🦁Crée une fonction `useUserContext` qui return le context
-// 💡const context = useContext(UserContext);
+// 🦁 Crée une fonction `useUserContext` qui return le context
+// 💡 const context = useContext(UserContext);
 
 // App
 const App = () => {
@@ -33,8 +33,8 @@ const App = () => {
   };
 
   return (
-    // 🦁Wrap la div avec `UserContext.Provider` et ajoute : `currentUser`, `onSubmit` et `onLogout`
-    // 🦁Puis tu peux supprimer toutes les props `currentUser={currentUser}` etc...
+    // 🦁 Wrap la div avec `UserContext.Provider` et ajoute : `currentUser`, `onSubmit` et `onLogout`
+    // 🦁 Puis tu peux supprimer toutes les props `currentUser={currentUser}` etc...
     <div className={styles.app}>
       <NavBar currentUser={currentUser} />
 
@@ -51,8 +51,8 @@ const App = () => {
 
 // Components
 const NavBar = ({ currentUser }) => {
-  // 🦁Supprime la props et remplace en utilisant le context
-  // 💡const { currentUser } = useContext(UserContext);
+  // 🦁 Supprime la props et remplace en utilisant le context
+  // 💡 const { currentUser } = useContext(UserContext);
   return (
     <div className={styles.nav}>
       <a href="#">Home</a>
@@ -63,7 +63,7 @@ const NavBar = ({ currentUser }) => {
 };
 
 const UserView = ({ user, onLogout }) => {
-  // 🦁Supprime totalement les props et les paramètres
+  // 🦁 Supprime totalement les props et les paramètres
   return (
     <div>
       <HelloUser currentUser={user} />
@@ -73,17 +73,17 @@ const UserView = ({ user, onLogout }) => {
 };
 
 const HelloUser = ({ currentUser }) => {
-  // 🦁Comment dans `NavBar`
+  // 🦁 Comme dans `NavBar`
   return <h1>Hello {currentUser?.username}</h1>;
 };
 
 const LogoutButton = ({ onLogout }) => {
-  // 🦁Comment dans `NavBar`
+  // 🦁 Comme dans `NavBar`
   return <button onClick={onLogout}>Logout</button>;
 };
 
 const UserForm = ({ onSubmit }) => {
-  // 🦁Comment dans `NavBar`
+  // 🦁 Comme dans `NavBar`
   return (
     <div>
       <h1>Login</h1>
@@ -103,7 +103,7 @@ const UserForm = ({ onSubmit }) => {
 };
 
 const Article = ({ currentUser }) => {
-  // 🦁Supprime totalement le paramètre
+  // 🦁 Supprime totalement le paramètre
   return (
     <article>
       <h2>Some articles...</h2>
@@ -114,7 +114,7 @@ const Article = ({ currentUser }) => {
 };
 
 const ArticleAction = ({ user }) => {
-  // 🦁Comment dans `NavBar`
+  // 🦁 Comment dans `NavBar`
   return (
     <div>
       <button>Like</button>

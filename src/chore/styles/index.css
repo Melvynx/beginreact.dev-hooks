@@ -151,3 +151,56 @@ input:focus-visible {
   align-items: center;
   gap: 8px;
 }
+hr {
+  width: 100%;
+}
+
+.simple-login-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  padding: 2rem;
+  max-width: 450px;
+  margin: auto;
+  height: fit-content;
+  margin-top: 16px;
+}
+
+.simple-login-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.simple-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.theme-app {
+  background: #ecf0f1;
+  max-width: 400px;
+  padding: 32px;
+  border-radius: 32px;
+  width: fit-content;
+  margin: auto;
+  color: #000000;
+}
+
+.theme-app button {
+  background: #bdc3c7;
+  color: #000000;
+}
+
+.theme-app.dark-theme-app {
+  background: #2c3e50;
+  color: #ffffff;
+}
+
+.theme-app.dark-theme-app button {
+  background: #34495e;
+  color: #ffffff;
+}

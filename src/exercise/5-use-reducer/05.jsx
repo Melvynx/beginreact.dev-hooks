@@ -7,6 +7,9 @@ const REDUCER_ACTIONS = {
 };
 
 const reducer = (state, { action, value = 1 }) => {
+  if (!Number(value)) return state;
+  if (value > 10) return state;
+
   switch (action) {
     case REDUCER_ACTIONS.INCREMENT:
       return state + value;
@@ -19,40 +22,35 @@ const reducer = (state, { action, value = 1 }) => {
   }
 };
 
-const useCounterReducer = () => {
-  const [count, dispatch] = useReducer(reducer, 0);
-  return [count, dispatch];
-};
-
 const Counter = () => {
-  const [count, dispatch] = useCounterReducer();
+  const [count, dispatch] = useReducer(reducer, 0);
 
   return (
     <div>
-      <button onClick={() => dispatch({ action: REDUCER_ACTIONS.DECREMENT })}>
-        -
-      </button>
       <button
         onClick={() =>
-          dispatch({ action: REDUCER_ACTIONS.DECREMENT, value: 5 })
+          dispatch({ action: REDUCER_ACTIONS.DECREMENT, value: 5000 })
         }
       >
         -5
       </button>
+      <button onClick={() => dispatch({ action: REDUCER_ACTIONS.DECREMENT })}>
+        -
+      </button>
       <button>{count}</button>
+      <button onClick={() => dispatch({ action: REDUCER_ACTIONS.INCREMENT })}>
+        +
+      </button>
       <button
         onClick={() =>
           dispatch({ action: REDUCER_ACTIONS.INCREMENT, value: 5 })
         }
       >
-        + 5
-      </button>
-      <button onClick={() => dispatch({ action: REDUCER_ACTIONS.INCREMENT })}>
-        +
+        +5
       </button>
       <br />
       <button onClick={() => dispatch({ action: REDUCER_ACTIONS.RESET })}>
-        RESET
+        Reset
       </button>
     </div>
   );

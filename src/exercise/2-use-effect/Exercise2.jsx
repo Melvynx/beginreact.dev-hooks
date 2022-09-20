@@ -1,17 +1,34 @@
-// 🦁 Ajout l'import de useEffect
-import { useState } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 
-// 🦁 Crée une variable `NAME_KEY` avec la valeur `name`
+const getInitialName = (key, defaultValue) => {
+  const storedItem = localStorage.getItem(key);
+
+  if (!storedItem) {
+    return defaultValue;
+  }
+
+  try {
+    return JSON.parse(storedItem);
+  } catch (e) {
+    localStorage.removeItem(key);
+    return defaultValue;
+  }
+};
+
+const useStickyState = (key, defaultValue) => {
+  const [state, setState] = useState(() => getInitialName(key, defaultValue));
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(state));
+  }, [state, key]);
+
+  return [state, setState];
+};
+
+const NAME_KEY = 'name';
 
 const NameInput = ({ defaultValue }) => {
-  // 🦁 Change la valeur par défaut en récupérant la valeur stockée dans le localStorage
-  // 💡 JSON.parse(localStorage.getItem(key))
-  // 🦁 Attention il faut vérifier que localStorage.getItem(key) n'est pas null sinon tu vas avoir une erreur !
-  // Si il est vide, tu peux utiliser la valeur par défaut
-  const [name, setName] = useState(defaultValue);
-
-  // 🦁 Dans un `useEffect` update la valeur stockée dans le localStorage.
-  // 💡 localStorage.setItem(key, JSON.stringify(name));
+  const [name, setName] = useStickyState(NAME_KEY, defaultValue);
 
   return (
     <label className="textfield">
@@ -25,13 +42,39 @@ const NameInput = ({ defaultValue }) => {
   );
 };
 
-const App = () => {
+const Counter = () => {
   const [counter, setCounter] = useState(0);
+  const [incrementOnScroll, setIncrementOnScroll] = useState(false);
+
+  useEffect(() => {
+    if (!incrementOnScroll) return;
+
+    const handleResize = () => {
+      setCounter((curr) => curr + 1);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [incrementOnScroll]);
 
   return (
-    <div className="vertical-stack">
-      <button onClick={() => setCounter(counter + 1)}>{counter}</button>
+    <>
+      <input
+        type="checkbox"
+        checked={incrementOnScroll}
+        onChange={(e) => setIncrementOnScroll(e.target.checked)}
+      />
+      <button onClick={() => setCounter((curr) => curr + 1)}>{counter}</button>
+    </>
+  );
+};
 
+const App = () => {
+  return (
+    <div className="vertical-stack">
+      <Counter />
       <NameInput defaultValue="" />
     </div>
   );

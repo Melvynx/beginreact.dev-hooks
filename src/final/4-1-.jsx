@@ -7,55 +7,6 @@ const users = [
   { username: 'User', password: 'User', isAdmin: false },
 ];
 
-// User
-const UserContext = createContext({ user: null });
-
-const useUserContext = () => {
-  const context = useContext(UserContext);
-  if (context === undefined) {
-    throw new Error('useUserContext must be used within a UserContextProvider');
-  }
-  return context;
-};
-
-const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-
-  const onSubmit = (username, password) => {
-    const user = users.find(
-      (u) => u.username === username && u.password === password
-    );
-    if (user) {
-      setUser(user);
-    } else {
-      alert('Invalid username or password');
-    }
-  };
-
-  const onLogout = () => {
-    setUser(null);
-  };
-
-  return (
-    <UserContext.Provider value={{ user, onLogout, onSubmit }}>
-      {children}
-    </UserContext.Provider>
-  );
-};
-
-const App = () => {
-  return (
-    <UserContextProvider>
-      <div className={styles.app}>
-        <NavBar />
-        <User />
-        <Article />
-      </div>
-    </UserContextProvider>
-  );
-};
-
-// Components
 const NavBar = () => {
   const { user } = useUserContext();
   return (
@@ -127,9 +78,45 @@ const ArticleAction = () => {
   );
 };
 
-const User = () => {
-  const { user } = useUserContext();
-  return user ? <UserView /> : <UserForm />;
+const UserContext = createContext({ user: null });
+
+const useUserContext = () => {
+  const context = useContext(UserContext);
+  if (context === undefined) {
+    throw new Error('useUserContext must be used within a UserContextProvider');
+  }
+  return context;
+};
+
+const App = () => {
+  const [user, setUser] = useState(null);
+
+  const onSubmit = (username, password) => {
+    const user = users.find(
+      (u) => u.username === username && u.password === password
+    );
+    if (user) {
+      setUser(user);
+    } else {
+      alert('Invalid username or password');
+    }
+  };
+
+  const onLogout = () => {
+    setUser(null);
+  };
+
+  return (
+    <UserContext.Provider value={{ user, onLogout, onSubmit }}>
+      <div className={styles.app}>
+        <NavBar />
+
+        {user ? <UserView /> : <UserForm />}
+
+        <Article />
+      </div>
+    </UserContext.Provider>
+  );
 };
 
 export default App;

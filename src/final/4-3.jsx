@@ -1,5 +1,11 @@
-import { createContext, useContext, useState } from 'react';
-import styles from '../exercise/4-use-context/Exercise4.module.css';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from 'react';
+import { SimpleUserForm } from '../toolbox/components/SimpleUserForm';
 
 // Fake database
 const users = [
@@ -32,24 +38,32 @@ const useUserManagerContext = () => {
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  const onSubmit = (username, password) => {
+  const onSubmit = useCallback((username, password) => {
     const user = users.find(
       (u) => u.username === username && u.password === password
     );
-    if (user) {
-      setUser(user);
-    } else {
+    if (!user) {
       alert('Invalid username or password');
+      return;
     }
-  };
+    setUser(user);
+  }, []);
 
-  const onLogout = () => {
+  const onLogout = useCallback(() => {
     setUser(null);
-  };
+  }, []);
+
+  const updateUsername = useCallback((username) => {
+    setUser((user) => ({ ...user, username }));
+  }, []);
+
+  const values = useMemo(() => {
+    return { onLogout, onSubmit, updateUsername };
+  }, [onLogout, onSubmit, updateUsername]);
 
   return (
     <UserContext.Provider value={{ user }}>
-      <UserManagerContext.Provider value={{ onLogout, onSubmit }}>
+      <UserManagerContext.Provider value={values}>
         {children}
       </UserManagerContext.Provider>
     </UserContext.Provider>
@@ -59,10 +73,10 @@ const UserContextProvider = ({ children }) => {
 const App = () => {
   return (
     <UserContextProvider>
-      <div className={styles.app}>
+      <div className="simple-login-app">
         <NavBar />
+        <hr />
         <User />
-        <Article />
       </div>
     </UserContextProvider>
   );
@@ -72,30 +86,33 @@ const App = () => {
 const NavBar = () => {
   const { user } = useUserContext();
   return (
-    <div className={styles.nav}>
+    <div className="simple-login-nav">
       <a href="#">Home</a>
       <a href="#">About</a>
       {user?.isAdmin ? <a href="#">Admin</a> : null}
-    </div>
-  );
-};
-
-const UserView = () => {
-  return (
-    <div>
-      <HelloUser />
-      <LogoutButton />
+      <Logout />
     </div>
   );
 };
 
 const HelloUser = () => {
   const { user } = useUserContext();
-  return <h1>Hello {user?.username}</h1>;
+  const { updateUsername } = useUserManagerContext();
+  return (
+    <h1>
+      Hello{' '}
+      <input
+        type="text"
+        onChange={(e) => updateUsername(e.target.value)}
+        value={user?.username ?? ''}
+      />
+    </h1>
+  );
 };
 
-const LogoutButton = () => {
+const Logout = () => {
   const { onLogout } = useUserManagerContext();
+  console.log('onLogout', onLogout);
   return <button onClick={onLogout}>Logout</button>;
 };
 
@@ -104,45 +121,14 @@ const UserForm = () => {
   return (
     <div>
       <h1>Login</h1>
-      <form
-        className={styles.form}
-        onSubmit={(e) => {
-          e.preventDefault();
-          onSubmit(e.target.username.value, e.target.password.value);
-        }}
-      >
-        <input type="text" name="username" placeholder="Username" />
-        <input type="password" name="password" placeholder="Password" />
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  );
-};
-
-const Article = () => {
-  return (
-    <article>
-      <h2>Some articles...</h2>
-      <p>There is the content</p>
-      <ArticleAction />
-    </article>
-  );
-};
-
-const ArticleAction = () => {
-  const { user } = useUserContext();
-  return (
-    <div>
-      <button>Like</button>
-      <button>Dislike</button>
-      {user?.isAdmin ? <button>Delete</button> : null}
+      <SimpleUserForm onSubmit={onSubmit} />
     </div>
   );
 };
 
 const User = () => {
   const { user } = useUserContext();
-  return user ? <UserView /> : <UserForm />;
+  return user ? <HelloUser /> : <UserForm />;
 };
 
 export default App;

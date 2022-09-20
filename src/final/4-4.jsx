@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import styles from '../exercise/4-use-context/Exercise4.module.css';
 import { createContext, useContextSelector } from 'use-context-selector';
+import styles from '../styles/Exercise4.module.css';
 
 // Fake database
 const users = [
