@@ -208,3 +208,16 @@ hr {
 .theme-global-app > button {
   margin-bottom: 16px;
 }
+
+.grid-prime-number {
+  display: grid;
+  /* 12 columns */
+  grid-template-columns: repeat(12, 1fr);
+  gap: 8px;
+}
+
+.grid-prime-number > li {
+  border: 1px solid #f1f1f1;
+  padding: 8px;
+  list-style-type: none;
+}

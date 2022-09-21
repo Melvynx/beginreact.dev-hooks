@@ -11,13 +11,12 @@
   "dependencies": {
     "@heroicons/react": "^1.0.6",
     "clsx": "^1.2.1",
+    "jotai": "^1.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.34.0",
     "react-router-dom": "^6.3.0",
-    "scheduler": "^0.23.0",
-    "styled-components": "^5.3.5",
-    "use-context-selector": "^1.4.1"
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.18.6",

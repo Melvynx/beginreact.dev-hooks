@@ -10,18 +10,18 @@ import UseEffect from '../exercise/2-use-effect/Exercise2';
 import UseRef from '../exercise/3-use-ref/Exercise3';
 import UseContext from '../exercise/4-use-context/04';
 import UseReducer from '../exercise/5-use-reducer/05';
-import Render1 from '../exercise/6-understand-render/Exercise6-1.jsx';
-import Render2 from '../exercise/6-understand-render/Exercise6-2.jsx';
-import Render3 from '../exercise/6-understand-render/Exercise6-3.jsx';
-import Render4 from '../exercise/6-understand-render/Exercise6-4.jsx';
-import Render5 from '../exercise/6-understand-render/Exercise6-5.jsx';
+import Render2 from '../exercise/6-understand-render/06.extra.2.jsx';
+import Render3 from '../exercise/6-understand-render/06.extra.3.jsx';
+import Render4 from '../exercise/6-understand-render/06.extra.4.jsx';
+import Render5 from '../exercise/6-understand-render/06.extra.5.jsx';
+import Render1 from '../exercise/6-understand-render/06.jsx';
 // Markdown
 import { ReactComponent as UseStateMarkdown } from '../exercise/1-use-state/Exercise1.md';
 import { ReactComponent as UseEffectMarkdown } from '../exercise/2-use-effect/Exercise2.md';
 import { ReactComponent as UseRefMarkdown } from '../exercise/3-use-ref/Exercise3.md';
 import { ReactComponent as UseContextMarkdown } from '../exercise/4-use-context/04.md';
 import { ReactComponent as UseReducerMarkdown } from '../exercise/5-use-reducer/05.md';
-import { ReactComponent as RenderMarkdown } from '../exercise/6-understand-render/Exercise6.md';
+import { ReactComponent as RenderMarkdown } from '../exercise/6-understand-render/06.md';
 // ExerciseProse 1
 import Solution1Exercise1 from '../final/1-1';
 import Solution1Exercise2 from '../final/1-2';
@@ -47,7 +47,7 @@ import Solution3Exercise3 from '../final/3-3';
 import Solution4Exercise1 from '../final/4-1';
 import Solution4Exercise2 from '../final/4-2';
 import Solution4Exercise3 from '../final/4-3';
-// import Solution4Exercise4 from '../final/4-4';
+import Solution4Exercise4 from '../final/4-4';
 // ExerciseProse 5
 import Solution5Exercise1 from '../final/5-1';
 import Solution5Exercise2 from '../final/5-2';
@@ -58,6 +58,7 @@ import Solution6Exercise1 from '../final/6-1';
 import Solution6Exercise2 from '../final/6-2';
 import Solution6Exercise3 from '../final/6-3';
 import Solution6Exercise4 from '../final/6-4';
+import Solution6Exercise5 from '../final/6-5';
 
 export const EXERCISES = [
   {
@@ -114,7 +115,7 @@ export const EXERCISES = [
         <Solution4Exercise1 key={1} />,
         <Solution4Exercise2 key={2} />,
         <Solution4Exercise3 key={3} />,
-        // <Solution4Exercise4 key={4} />,
+        <Solution4Exercise4 key={4} />,
       ],
     },
   },
@@ -132,7 +133,7 @@ export const EXERCISES = [
     },
   },
   {
-    name: '6-react-exercises',
+    name: '6-react-render',
     parts: {
       exercises: [
         <Render1 key={1} />,
@@ -147,6 +148,7 @@ export const EXERCISES = [
         <Solution6Exercise2 key={2} />,
         <Solution6Exercise3 key={3} />,
         <Solution6Exercise4 key={4} />,
+        <Solution6Exercise5 key={5} />,
       ],
     },
   },

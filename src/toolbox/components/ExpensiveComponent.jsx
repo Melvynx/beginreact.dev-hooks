@@ -1,28 +1,24 @@
-import { useEffect, useRef, useState } from 'react';
 import { useOnRenderStyle } from '../hooks/useOnRenderStyle.jsx';
 
 export const ExpensiveComponent = () => {
-  const [numbers, setNumbers] = useState([]);
   const ref = useOnRenderStyle();
 
-  useEffect(() => {
-    // generate an array of random numbers 10 x 10
-    const generateNumbers = () => {
-      const numbers = [];
-      for (let i = 0; i < 100; i++) {
-        numbers.push(Math.floor(Math.random() * 100));
-      }
-      return numbers;
-    };
-    const generateNumbersLine = () => {
-      const numbers = [];
-      for (let i = 0; i < 100; i++) {
-        numbers.push(generateNumbers());
-      }
-      return numbers;
-    };
-    setNumbers(generateNumbersLine());
-  }, []);
+  const generateNumbers = () => {
+    const numbers = [];
+    for (let i = 0; i < 100; i++) {
+      numbers.push(Math.floor(Math.random() * 100));
+    }
+    return numbers;
+  };
+  const generateNumbersLine = () => {
+    const numbers = [];
+    for (let i = 0; i < 100; i++) {
+      numbers.push(generateNumbers());
+    }
+    return numbers;
+  };
+
+  const numbers = generateNumbersLine();
 
   return (
     <div ref={ref} style={{ width: '500px', overflowX: 'scroll' }}>

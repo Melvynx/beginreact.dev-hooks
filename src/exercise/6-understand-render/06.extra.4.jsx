@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useOnRenderStyle } from '../../toolbox/hooks/useOnRenderStyle.jsx';
 import { ExpensiveComponent } from '../../toolbox/components/ExpensiveComponent.jsx';
+import { useOnRenderStyle } from '../../toolbox/hooks/useOnRenderStyle.jsx';
 
 const SmallComponentTop = () => {
   const ref = useOnRenderStyle();
@@ -22,7 +22,7 @@ const App = () => {
     >
       <div style={{ height: '800px' }}>
         <SmallComponentTop />
-        <p>Hey, you scroll {scroll}</p>
+        <p style={{ width: 'fit-content' }}>Hey, you scroll {scroll}</p>
         <ExpensiveComponent />
       </div>
     </div>
