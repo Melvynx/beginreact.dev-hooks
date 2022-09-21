@@ -1,29 +1,22 @@
-import { useEffect } from 'react';
-import { useRef } from 'react';
+/* eslint-disable no-unused-vars */ // 🦁 Enlève cette ligne
 import { useState } from 'react';
 
 const useDebounce = (callback, time) => {
-  const timeoutRef = useRef(null);
+  // 🦁 Remplace cette variable par un `useRef`
+  // 💡 timeout correspond à la référence de notre timeout.
+  //   Quand tu fais un setTimeout, il return une valeur que
+  //   tu peux clear afin de l'annuler. https://developer.mozilla.org/fr/docs/Web/API/setTimeout#valeur_de_retour
+  const timeout = null;
 
   const onDebounce = (...args) => {
-    clearTimeout(timeoutRef.current);
-
-    timeoutRef.current = setTimeout(() => {
-      callback(...args);
-    }, time);
+    // 🦁 Annule le timeout https://developer.mozilla.org/en-US/docs/Web/API/clearTimeout
+    // ℹ️ Cette fonction sera appelée à chaque fois que l'user tape un caractère, on veut donc clear
+    //    le dernier timeout pour relancer un nouveau timeout.
+    // 🦁 Crée un nouveau timeout https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
+    //    a la fin il doit appeler la callback avec les arguments et le temps est défini par le paramètre `time`
   };
 
   return onDebounce;
-};
-
-const useRenderCount = () => {
-  const renderCountRef = useRef(0);
-
-  useEffect(() => {
-    renderCountRef.current += 1;
-  });
-
-  return renderCountRef;
 };
 
 const fetchAgeByName = (name) => {
@@ -32,25 +25,22 @@ const fetchAgeByName = (name) => {
 
 const App = () => {
   const [result, setResult] = useState(null);
-  const inputRef = useRef(null);
-  const renderCountRef = useRenderCount();
 
-  const onSearch = useDebounce(() => {
-    fetchAgeByName(inputRef.current.value).then((data) => {
+  // 🦁 Wrap la function `onSearch` dans le hooks useDebounce
+  // 💡 const onSearch = useDebounce((value) => {...}, 500);
+  const onSearch = (value) => {
+    fetchAgeByName(value).then((data) => {
       setResult(data);
     });
-  }, 500);
+  };
 
   return (
     <div>
       <input
-        ref={(ref) => {
-          inputRef.current = ref;
-        }}
         type="text"
         placeholder="Search bar"
-        onChange={() => {
-          onSearch();
+        onChange={(event) => {
+          onSearch(event.target.value);
         }}
       />
       {result ? (
@@ -59,9 +49,6 @@ const App = () => {
           <b>{result.count}</b> people with this name.
         </div>
       ) : null}
-      <div style={{ color: 'red', padding: 16 }}>
-        The component render {renderCountRef.current} times
-      </div>
     </div>
   );
 };

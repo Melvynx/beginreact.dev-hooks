@@ -204,3 +204,7 @@ hr {
   background: #34495e;
   color: #ffffff;
 }
+
+.theme-global-app > button {
+  margin-bottom: 16px;
+}

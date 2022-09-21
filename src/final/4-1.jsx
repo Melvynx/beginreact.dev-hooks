@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import { createContext, useContext, useReducer, useState } from 'react';
 
-const DarkModeContext = createContext();
+const ThemeContext = createContext();
 
-const DarkModeProvider = ({ children }) => {
+const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
 
   const toggle = () =>
@@ -18,14 +18,12 @@ const DarkModeProvider = ({ children }) => {
   const values = { theme, isDark, isLight, setLight, setDark, toggle };
 
   return (
-    <DarkModeContext.Provider value={values}>
-      {children}
-    </DarkModeContext.Provider>
+    <ThemeContext.Provider value={values}>{children}</ThemeContext.Provider>
   );
 };
 
 const ThemedLayout = ({ children }) => {
-  const { isDark } = useContext(DarkModeContext);
+  const { isDark } = useContext(ThemeContext);
   return (
     <div className={clsx('theme-app', { 'dark-theme-app': isDark })}>
       {children}
@@ -34,22 +32,22 @@ const ThemedLayout = ({ children }) => {
 };
 
 const ForceLightMode = () => {
-  const { setLight } = useContext(DarkModeContext);
+  const { setLight } = useContext(ThemeContext);
   return <button onClick={() => setLight()}>Force light</button>;
 };
 
 const ForceDarkMode = () => {
-  const { setDark } = useContext(DarkModeContext);
+  const { setDark } = useContext(ThemeContext);
   return <button onClick={() => setDark()}>Force dark</button>;
 };
 
 const ToggleMode = () => {
-  const { toggle, isDark } = useContext(DarkModeContext);
+  const { toggle, isDark } = useContext(ThemeContext);
   return <button onClick={toggle}>{isDark ? '🌞' : '🌙'}</button>;
 };
 
 const CurrentModeInfo = () => {
-  const { theme } = useContext(DarkModeContext);
+  const { theme } = useContext(ThemeContext);
   return (
     <div>
       Current theme: <b>{theme}</b>
@@ -63,7 +61,7 @@ const App = () => {
     <div>
       <p>Not in dark mode</p>
       <button onClick={increment}>{count}</button>
-      <DarkModeProvider>
+      <ThemeProvider>
         <ThemedLayout>
           <ToggleMode />
 
@@ -80,7 +78,7 @@ const App = () => {
             <ForceDarkMode />
           </div>
         </ThemedLayout>
-      </DarkModeProvider>
+      </ThemeProvider>
     </div>
   );
 };

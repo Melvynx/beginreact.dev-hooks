@@ -49,6 +49,7 @@ const CurrentModeInfo = ({ theme }) => {
 
 const ForceThemeButtons = ({ setTheme }) => (
   <div style={{ marginTop: 32 }}>
+    {/* 🦁 Enlever les props */}
     <ForceLightMode setLight={() => setTheme('light')} />
     <ForceDarkMode setDark={() => setTheme('dark')} />
   </div>

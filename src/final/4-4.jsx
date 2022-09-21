@@ -1,132 +1,99 @@
-import { useState } from 'react';
+import clsx from 'clsx';
+import { useCallback, useReducer, useState } from 'react';
 import { createContext, useContextSelector } from 'use-context-selector';
-import styles from '../styles/Exercise4.module.css';
 
-// Fake database
-const users = [
-  { username: 'Admin', password: 'Admin', isAdmin: true },
-  { username: 'User', password: 'User', isAdmin: false },
-];
+const ThemeContext = createContext(null);
 
-// User
-const UserContext = createContext({ user: null });
-
-const useUserContext = (selector) => {
-  return useContextSelector(UserContext, selector);
+const useThemeContext = (selector) => {
+  return useContextSelector(ThemeContext, selector);
 };
 
-const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState('light');
 
-  const onSubmit = (username, password) => {
-    const user = users.find(
-      (u) => u.username === username && u.password === password
-    );
-    if (user) {
-      setUser(user);
-    } else {
-      alert('Invalid username or password');
-    }
-  };
+  const toggle = useCallback(
+    () => setTheme((current) => (current === 'light' ? 'dark' : 'light')),
+    []
+  );
 
-  const onLogout = () => {
-    setUser(null);
-  };
+  const setLight = useCallback(() => setTheme('light'), []);
+  const setDark = useCallback(() => setTheme('dark'), []);
+
+  const isDark = theme === 'dark';
+  const isLight = theme === 'light';
+
+  const values = { theme, isDark, isLight, setLight, setDark, toggle };
 
   return (
-    <UserContext.Provider value={{ user, onLogout, onSubmit }}>
+    <ThemeContext.Provider value={values}>{children}</ThemeContext.Provider>
+  );
+};
+
+const ThemedLayout = ({ children }) => {
+  const isDark = useThemeContext((state) => state.isDark);
+  return (
+    <div className={clsx('theme-app', { 'dark-theme-app': isDark })}>
       {children}
-    </UserContext.Provider>
+    </div>
+  );
+};
+
+const ForceLightMode = () => {
+  console.log('FORCE LIGHT MODE');
+  // const setLight = useThemeContext((state) => state.setLight);
+  return <button onClick={() => void 0}>Force light</button>;
+};
+
+const ForceDarkMode = () => {
+  console.log('FORCE DARK MODE');
+
+  const setDark = useContextSelector(ThemeContext, (values) => values.setDark);
+  return <button onClick={() => setDark()}>Force dark</button>;
+};
+
+const ToggleMode = () => {
+  const { toggle, isDark } = useThemeContext(({ toggle, isDark }) => ({
+    toggle,
+    isDark,
+  }));
+  return <button onClick={toggle}>{isDark ? '🌞' : '🌙'}</button>;
+};
+
+const CurrentModeInfo = () => {
+  const theme = useThemeContext(({ theme }) => theme);
+  return (
+    <div>
+      Current theme: <b>{theme}</b>
+    </div>
   );
 };
 
 const App = () => {
+  const [count, increment] = useReducer((curr) => curr + 1, 0);
   return (
-    <UserContextProvider>
-      <div className={styles.app}>
-        <NavBar />
-        <User />
-        <Article />
-      </div>
-    </UserContextProvider>
-  );
-};
+    <div className="theme-global-app">
+      <p>Not in dark mode</p>
+      <button onClick={increment}>{count}</button>
+      <ThemeProvider>
+        <ThemedLayout>
+          <ToggleMode />
 
-// Components
-const NavBar = () => {
-  const isAdmin = useUserContext((v) => v.user?.isAdmin);
-  return (
-    <div className={styles.nav}>
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      {isAdmin ? <a href="#">Admin</a> : null}
+          <h1>Articles</h1>
+          <h3>What is useContext ?</h3>
+          <p>
+            useContext is used to pass data through the component tree without
+            having to pass props down manually at every level.
+          </p>
+          <hr />
+          <CurrentModeInfo />
+          <div style={{ marginTop: 32 }}>
+            <ForceLightMode />
+            <ForceDarkMode />
+          </div>
+        </ThemedLayout>
+      </ThemeProvider>
     </div>
   );
-};
-
-const UserView = () => {
-  return (
-    <div>
-      <HelloUser />
-      <LogoutButton />
-    </div>
-  );
-};
-
-const HelloUser = () => {
-  const user = useUserContext((v) => v.user);
-  return <h1>Hello {user?.username}</h1>;
-};
-
-const LogoutButton = () => {
-  const onLogout = useUserContext((v) => v.onLogout);
-  return <button onClick={onLogout}>Logout</button>;
-};
-
-const UserForm = () => {
-  const onSubmit = useUserContext((v) => v.onSubmit);
-  return (
-    <div>
-      <h1>Login</h1>
-      <form
-        className={styles.form}
-        onSubmit={(e) => {
-          e.preventDefault();
-          onSubmit(e.target.username.value, e.target.password.value);
-        }}
-      >
-        <input type="text" name="username" placeholder="Username" />
-        <input type="password" name="password" placeholder="Password" />
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  );
-};
-
-const Article = () => {
-  return (
-    <article>
-      <h2>Some articles...</h2>
-      <p>There is the content</p>
-      <ArticleAction />
-    </article>
-  );
-};
-
-const ArticleAction = () => {
-  const isAdmin = useUserContext((v) => v.user?.isAdmin);
-  return (
-    <div>
-      <button>Like</button>
-      <button>Dislike</button>
-      {isAdmin ? <button>Delete</button> : null}
-    </div>
-  );
-};
-
-const User = () => {
-  const user = useUserContext((v) => v.user);
-  return user ? <UserView /> : <UserForm />;
 };
 
 export default App;
