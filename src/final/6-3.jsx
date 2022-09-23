@@ -1,4 +1,4 @@
-import { useReducer, useRef } from 'react';
+import { useReducer } from 'react';
 import { useOnRenderStyle } from '../toolbox/hooks/useOnRenderStyle.jsx';
 
 const HeaderInput = ({ count }) => {
@@ -11,8 +11,7 @@ const HeaderInput = ({ count }) => {
 };
 
 const Header = ({ count }) => {
-  const headerRef = useRef();
-  useOnRenderStyle(headerRef);
+  const headerRef = useOnRenderStyle();
 
   return (
     <div ref={headerRef}>

@@ -212,7 +212,7 @@ hr {
 .grid-prime-number {
   display: grid;
   /* 12 columns */
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 8px;
 }
 

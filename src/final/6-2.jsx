@@ -5,7 +5,7 @@ const User = ({ user }) => {
   return (
     <div>
       <NameMemo name={user.name} />
-      <AgeMemo age={user.age} name={user.name} />
+      <AgeMemo age={user.age} />
     </div>
   );
 };

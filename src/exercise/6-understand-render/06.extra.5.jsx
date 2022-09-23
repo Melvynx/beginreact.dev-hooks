@@ -1,6 +1,10 @@
 import { useReducer, useState } from 'react';
 
 const generatePrime = (n) => {
+  if (n > 90000) {
+    n = 90000;
+  }
+
   const primes = [];
   for (let i = 2; i <= n; i++) {
     let isPrime = true;
@@ -28,7 +32,6 @@ const PrimeNumber = ({ index, number }) => {
 // 🦁 Crée PrimeNumberMemo afin de ne pas render PrimeNumber à chaque fois
 //    qu'un élément de la liste change.
 // 💡 const PrimeNumberMemo = ...
-
 export const PrimeNumbers = () => {
   const [max, setMax] = useState(10000);
   // 🦁 Utilise useMemo avec `max` comme dépendance afin de ne pas recalculer les nombres

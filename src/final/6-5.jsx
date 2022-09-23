@@ -1,8 +1,8 @@
 import { memo, useMemo, useReducer, useState } from 'react';
 
 const generatePrime = (n) => {
-  if (n > 50000) {
-    n = 50000;
+  if (n > 60000) {
+    n = 60000;
   }
 
   const primes = [];
@@ -22,6 +22,7 @@ const generatePrime = (n) => {
 };
 
 const PrimeNumber = ({ index, number }) => {
+  console.log(index);
   return (
     <li>
       {index}: <b>{number}</b>
