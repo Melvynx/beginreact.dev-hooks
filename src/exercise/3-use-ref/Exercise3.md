@@ -23,7 +23,7 @@ C'est ce cas que l'on verra dans cet exercice.
 
 [📖 Mon article sur useRef](https://codelynx.dev/posts/comment-utiliser-useref) (à lire aussi de ton coté)
 
-## Exercise
+## Exercice
 
 Nous avons une petite application qui, lorsque tu rentres ton prénom, te dit : "l'âge de <ton prénom>".
 

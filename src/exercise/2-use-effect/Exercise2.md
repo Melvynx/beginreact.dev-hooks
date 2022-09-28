@@ -29,14 +29,14 @@ useEffect(() => {
 }, [dependencies]);
 ```
 
-⚠️ Commet son nom l'indique, il permet de gérer les `side effect`.
+⚠️ Comme son nom l'indique, il permet de gérer les `side effect`.
 
 Mais c'est quoi un `side effect` ?
 
-Il permet de garder ton composant synchroniser avec des systèmes externe.
+Il permet de garder ton composant synchronisé avec des systèmes externes.
 (browser APIs ex: localStorage, third-party libraries, network, etc...)
 
-Pour update des states basée sûr un autre state tu n'as pas besoin d'avoir de useEffect.
+Pour update un state basés sur un autre state tu n'as pas besoin d'avoir de useEffect.
 
 [📖 useEffect BETA](https://beta.reactjs.org/apis/react/useEffect)
 
@@ -44,7 +44,7 @@ Pour update des states basée sûr un autre state tu n'as pas besoin d'avoir de 
 
 ## Exercice
 
-Dans le composant `Hello`, on veut que le `name` soit garder dans le `localStorage`
+Dans le composant `Hello`, on veut que le `name` soit gardé dans le `localStorage`
 afin de ne pas le perdre quand on recharge la page.
 
 Pour ça écoute Lienx 🦁 dans le fichier Exercice.
@@ -58,9 +58,9 @@ dans le localStorage (à chaque render).
 
 De plus, le code mis dans la defaultValue du useState est pas top top...
 
-Déplace cette logique dans une fonction `getInitialName` et utilise là dans le useState.
+Déplace cette logique dans une fonction `getInitialName` et utilise la dans le useState.
 
-Remplacer la valeur par défaut par une arrow function. (💡 `useState(() => ...)`)
+Remplace la valeur par défaut par une arrow function. (💡 `useState(() => ...)`)
 
 Effectivement `useState` peut prendre une fonction en paramètre pour initialiser
 la valeur par défaut.
@@ -78,7 +78,7 @@ Car on change l'item dans le local storage même quand ça ne sert à rien.
 
 ## Extra 3 - Refactor
 
-Déplace toute la logique qui concerne le state et le local storage dans un custom hooks.
+Déplace toute la logique qui concerne le state et le local storage dans un custom hook.
 
 Pour ça, il te suffit de créer une fonction qui se nomme `useStickyState` et de
 déplacer la logique.
@@ -89,7 +89,7 @@ déplacer la logique.
 
 ## Extra 4 - Remplacer le useEffect
 
-Le `useEffect` est devenue inutile, car il permet de tracker un side effect.
+Le `useEffect` est devenu inutile, car il permet de tracker un side effect.
 
 Hors ici ce n'est plus un side effect car on sait exactement quand notre state est
 modifié.
@@ -97,12 +97,12 @@ modifié.
 Pour gérer le local storage, on va créer une fonction `setValue` dans laquelle on va
 changer le state, mais aussi update le local storage.
 
-`setValue` est une fonction à l'intérieur de `useStickyState`. Dans la valeur de retours
+`setValue` est une fonction à l'intérieur de `useStickyState`. Dans la valeur de retour
 tu peux remplacer `setState` par `setValue` pour garder la même API. (attention `setState`
 peut prendre une fonction en paramètre, il faut gérer ce cas dans `setValue`)
 
-⚠️ Le `useEffect` à sa place ici, je fais cet exercice pour te rendre
-compte des possibilités et de comprendre comment tu peux remplacer le `useEffect`
+⚠️ Le `useEffect` a sa place ici, je fais cet exercice pour que tu te rendes
+compte des possibilités et comprenne comment tu peux remplacer le `useEffect`
 
 💌 Tu comprends que l'usage du `useEffect` peut parfois être remplacé.
 
@@ -133,7 +133,7 @@ la vidéo de solution.
 
 ## Extra 6 - Refactor
 
-Maintenant notre composant App **entière** rerender quand la fenêtre change. C'est une très
+Maintenant, notre composant App **entière** rerender quand la fenêtre change. C'est une très
 mauvaise pratique, car ça ralenti notre navigateur.
 
 La solution est de déplacer la logique du Counter et du listener qui écoute les changements
@@ -147,7 +147,7 @@ Car uniquement le bouton a besoin de savoir quand la taille de la fenêtre chang
 
 Notre bouton s’incrémente lorsque la page grandit.
 
-Dans le composant `Counter`, rajoute une checkbox et fait en sorte
+Dans le composant `Counter`, rajoute une checkbox et fais en sorte
 que le bouton s'incrémente seulement quand la checkbox est cochée.
 
 Il faudra rajouter une condition pour le `useEffect`.
@@ -158,4 +158,4 @@ Il faudra rajouter une condition pour le `useEffect`.
 
 ## Solution 8 - EXPLICATION DU HOOKS FLOW
 
-⚠️ Ceci n'est pas un exercise. Tu peux directement regarder la vidéo solution. ⚠️
+⚠️ Ceci n'est pas un exercice. Tu peux directement regarder la vidéo solution. ⚠️
