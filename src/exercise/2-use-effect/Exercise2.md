@@ -42,7 +42,7 @@ Pour update un state basés sur un autre state tu n'as pas besoin d'avoir de use
 
 [📖 useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect)
 
-## Exercice
+## Exercice - Local storage
 
 Dans le composant `Hello`, on veut que le `name` soit gardé dans le `localStorage`
 afin de ne pas le perdre quand on recharge la page.

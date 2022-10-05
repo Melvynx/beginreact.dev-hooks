@@ -3,7 +3,17 @@ import { ExpensiveComponent } from '../toolbox/components/ExpensiveComponent.jsx
 
 const SmallComponentTop = () => {
   return (
-    <div style={{ width: '100px', height: '100px' }}>SmallComponentLeft</div>
+    <div
+      style={{
+        width: 'fit-content',
+        padding: 32,
+        display: 'grid',
+        placeContent: 'center',
+        border: '2px solid red',
+      }}
+    >
+      SmallComponentLeft
+    </div>
   );
 };
 

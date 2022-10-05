@@ -221,3 +221,18 @@ hr {
   padding: 8px;
   list-style-type: none;
 }
+
+.small-component-top {
+  width: fit-content;
+  padding: 32px;
+  display: grid;
+  place-content: center;
+  border: 2px solid red;
+}
+
+.e-06-extra-4-scroll-text {
+  width: fit-content;
+  display: block;
+  border: 1px solid red;
+  padding: 8px;
+}

@@ -23,7 +23,7 @@ Donc pour update le state il faut utiliser `setState(newState)`.
 
 [📖 useState](https://beta.reactjs.org/apis/usestate)
 
-## Exercice 1
+## Exercice 1 - Simple useState
 
 Ajoute un state pour que l'application te dise bonjour avec ton nom en temps réel.
 
