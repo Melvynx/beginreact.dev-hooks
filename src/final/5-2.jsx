@@ -1,11 +1,11 @@
 import { useReducer } from 'react';
 
-const reducer = (value, action) => {
+const reducer = (state, action) => {
   switch (action) {
     case 'increment':
-      return value + 1;
+      return state + 1;
     case 'decrement':
-      return value - 1;
+      return state - 1;
     default:
       throw new Error('Unexpected state');
   }
