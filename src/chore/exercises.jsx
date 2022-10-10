@@ -4,10 +4,10 @@
  */
 
 // Exercises
-import UseState1 from '../exercise/1-use-state/Exercise1-1.jsx';
-import UseState5 from '../exercise/1-use-state/Exercise1-5.jsx';
-import UseEffect from '../exercise/2-use-effect/Exercise2';
-import UseRef from '../exercise/3-use-ref/Exercise3';
+import UseState1 from '../exercise/1-use-state/01.jsx';
+import UseState5 from '../exercise/1-use-state/01.extra.5.jsx';
+import UseEffect from '../exercise/2-use-effect/02';
+import UseRef from '../exercise/3-use-ref/03';
 import UseContext from '../exercise/4-use-context/04';
 import UseReducer from '../exercise/5-use-reducer/05';
 import Render2 from '../exercise/6-understand-render/06.extra.2.jsx';
@@ -16,9 +16,9 @@ import Render4 from '../exercise/6-understand-render/06.extra.4.jsx';
 import Render5 from '../exercise/6-understand-render/06.extra.5.jsx';
 import Render1 from '../exercise/6-understand-render/06.jsx';
 // Markdown
-import { ReactComponent as UseStateMarkdown } from '../exercise/1-use-state/Exercise1.md';
-import { ReactComponent as UseEffectMarkdown } from '../exercise/2-use-effect/Exercise2.md';
-import { ReactComponent as UseRefMarkdown } from '../exercise/3-use-ref/Exercise3.md';
+import { ReactComponent as UseStateMarkdown } from '../exercise/1-use-state/01.md';
+import { ReactComponent as UseEffectMarkdown } from '../exercise/2-use-effect/02.md';
+import { ReactComponent as UseRefMarkdown } from '../exercise/3-use-ref/03.md';
 import { ReactComponent as UseContextMarkdown } from '../exercise/4-use-context/04.md';
 import { ReactComponent as UseReducerMarkdown } from '../exercise/5-use-reducer/05.md';
 import { ReactComponent as RenderMarkdown } from '../exercise/6-understand-render/06.md';
