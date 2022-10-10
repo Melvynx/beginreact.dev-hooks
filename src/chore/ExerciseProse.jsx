@@ -74,7 +74,7 @@ const Prose = ({ children }) => {
       link.textContent = `Solution ${exerciseNo}`;
       link.setAttribute('solution-link', 'true');
 
-      current.children[1].insertBefore(link, h2.nextSibling);
+      current.children[0].insertBefore(link, h2.nextSibling);
     }
   }, [isOpen, children]);
 
@@ -88,7 +88,7 @@ const Prose = ({ children }) => {
   return (
     <>
       <button className="absolute-open-button" onClick={() => handleClick()}>
-        Close
+        {isOpen ? 'Close' : 'Open md'}
       </button>
       <Link
         to=".."
