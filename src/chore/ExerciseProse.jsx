@@ -85,13 +85,16 @@ const Prose = ({ children }) => {
     });
   };
 
+  const pathname = window.location.pathname.split('/').slice(0, -1);
+  const backUrl = window.location.origin + pathname.join('/');
+
   return (
     <>
       <button className="absolute-open-button" onClick={() => handleClick()}>
         {isOpen ? 'Close' : 'Open md'}
       </button>
       <Link
-        to=".."
+        to={backUrl}
         relative="path"
         className="absolute-open-button"
         style={{ top: 46 }}
