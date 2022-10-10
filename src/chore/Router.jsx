@@ -7,8 +7,8 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router';
 import { Link } from 'react-router-dom';
-import { EXERCISES } from './exercises';
 import { ExerciseProse } from './ExerciseProse.jsx';
+import { EXERCISES } from './exercises';
 
 export const Router = () => {
   return (
@@ -55,7 +55,7 @@ export const Router = () => {
           ))}
 
           <Route
-            path={`/${exercise.name}/solution`}
+            path={`/${exercise.name}/*`}
             element={<Navigate to={`/${exercise.name}`} replace={true} />}
           />
         </React.Fragment>
@@ -89,6 +89,9 @@ const ExerciseRoutes = ({ data }) => {
             Solution {i + 1}
           </Link>
         ))}
+        <Link style={{ marginTop: 64 }} to="/">
+          Home
+        </Link>
       </div>
     </div>
   );

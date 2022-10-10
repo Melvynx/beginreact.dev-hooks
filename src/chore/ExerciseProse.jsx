@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 export const ExerciseProse = ({ markdownElement, children }) => {
   return (
@@ -84,20 +85,24 @@ const Prose = ({ children }) => {
     });
   };
 
-  if (!isOpen) {
-    return (
-      <button className="absolute-open-button" onClick={() => handleClick()}>
-        Open md
-      </button>
-    );
-  }
-
   return (
-    <div ref={ref} className="prose">
+    <>
       <button className="absolute-open-button" onClick={() => handleClick()}>
         Close
       </button>
-      {children}
-    </div>
+      <Link
+        to=".."
+        relative="path"
+        className="absolute-open-button"
+        style={{ top: 46 }}
+      >
+        Back
+      </Link>
+      {isOpen ? (
+        <div ref={ref} className="prose">
+          {children}
+        </div>
+      ) : null}
+    </>
   );
 };
