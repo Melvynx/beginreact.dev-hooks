@@ -236,3 +236,7 @@ hr {
   border: 1px solid red;
   padding: 8px;
 }
+
+ul {
+  width: 100%;
+}
