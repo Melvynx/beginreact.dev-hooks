@@ -11,11 +11,11 @@ import { useReducer, useState } from 'react';
 //  - constante pour savoir si le thème est dark
 //  - constante pour savoir si le thème est light
 //  - définit une variables `values` qui contient toggle, setLight, setDark, isDark, isLight, theme
-//  - retourne le `CountContext.Provider` avec `values` en props
+//  - retourne le `ThemeContext.Provider` avec `values` en props
 //  - 💡 value={values}
 
 const ThemedLayout = ({ children, isDark }) => {
-  // 🦁 Supprime la props et remplace par le context en utilisant React.useContext de CountContext
+  // 🦁 Supprime la props et remplace par le context en utilisant React.useContext de ThemeContext
   return (
     <div className={clsx('theme-app', { 'dark-theme-app': isDark })}>
       {children}
@@ -24,22 +24,22 @@ const ThemedLayout = ({ children, isDark }) => {
 };
 
 const ForceLightMode = ({ setLight }) => {
-  // 🦁 Supprime la props et remplace par le context en utilisant React.useContext de CountContext
+  // 🦁 Supprime la props et remplace par le context en utilisant React.useContext de ThemeContext
   return <button onClick={() => setLight()}>Force light</button>;
 };
 
 const ForceDarkMode = ({ setDark }) => {
-  // 🦁 Supprime la props et remplace par le context en utilisant React.useContext de CountContext
+  // 🦁 Supprime la props et remplace par le context en utilisant React.useContext de ThemeContext
   return <button onClick={() => setDark()}>Force dark</button>;
 };
 
 const ToggleMode = ({ toggle, isDark }) => {
-  // 🦁 Supprime la props et remplace par le context en utilisant React.useContext de CountContext
+  // 🦁 Supprime la props et remplace par le context en utilisant React.useContext de ThemeContext
   return <button onClick={toggle}>{isDark ? '🌞' : '🌙'}</button>;
 };
 
 const CurrentModeInfo = ({ theme }) => {
-  // 🦁 Supprime la props et remplace par le context en utilisant React.useContext de CountContext
+  // 🦁 Supprime la props et remplace par le context en utilisant React.useContext de ThemeContext
   return (
     <div>
       Current theme: <b>{theme}</b>
