@@ -7,6 +7,8 @@ const REDUCER_ACTIONS = {
   SET: 'set',
 };
 
+// Pas de vidéo correction pour cette exercice !
+
 const reducer = (state, { action, value = 1 }) => {
   switch (action) {
     case REDUCER_ACTIONS.INCREMENT:
