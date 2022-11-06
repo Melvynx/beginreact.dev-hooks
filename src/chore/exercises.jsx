@@ -4,8 +4,8 @@
  */
 
 // Exercises
-import UseState1 from '../exercise/1-use-state/01.jsx';
 import UseState5 from '../exercise/1-use-state/01.extra.5.jsx';
+import UseState1 from '../exercise/1-use-state/01.jsx';
 import UseEffect from '../exercise/2-use-effect/02';
 import UseRef from '../exercise/3-use-ref/03';
 import UseContext from '../exercise/4-use-context/04';
@@ -53,6 +53,7 @@ import Solution5Exercise1 from '../final/5-1';
 import Solution5Exercise2 from '../final/5-2';
 import Solution5Exercise3 from '../final/5-3';
 import Solution5Exercise4 from '../final/5-4';
+import Solution5Exercise5 from '../final/5-5.bonus';
 // ExerciseProse 6
 import Solution6Exercise1 from '../final/6-1';
 import Solution6Exercise2 from '../final/6-2';
@@ -129,6 +130,7 @@ export const EXERCISES = [
         <Solution5Exercise2 key={2} />,
         <Solution5Exercise3 key={3} />,
         <Solution5Exercise4 key={4} />,
+        <Solution5Exercise5 key={5} />,
       ],
     },
   },
