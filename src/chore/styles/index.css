@@ -237,6 +237,10 @@ hr {
   padding: 8px;
 }
 
-ul {
-  width: 100%;
+ul.history {
+  text-align: left;
+}
+
+ul.history > li:not(:last-child) {
+  border-bottom: 2px solid var(--paper);
 }

@@ -8,7 +8,7 @@ const useStateHistory = () => {
   };
 
   const deleteHistory = (index) => {
-    if (!index) return;
+    if (typeof index !== 'number') return;
 
     setHistory((current) => {
       current.splice(index, 1);
@@ -46,9 +46,15 @@ const App = () => {
         />
       </div>
       <Name name={name} isNameReversed={isNameReversed} />
-      <ul style={{ textAlign: 'left' }}>
+      <ul className="history">
         {history.map((name, index) => (
-          <li onClick={() => deleteHistory(index)} key={index}>
+          <li
+            onClick={() => {
+              console.log('TEST');
+              deleteHistory(index);
+            }}
+            key={index}
+          >
             {name}
           </li>
         ))}
