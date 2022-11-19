@@ -1,16 +1,16 @@
 import { useRef, useState } from 'react';
 
 const useDebounce = (callback, time) => {
-  const debouce = useRef(null);
+  const debounce = useRef(null);
 
-  const onDebouce = (...args) => {
-    clearTimeout(debouce.current);
-    debouce.current = setTimeout(() => {
+  const onDebounce = (...args) => {
+    clearTimeout(debounce.current);
+    debounce.current = setTimeout(() => {
       callback(...args);
     }, time);
   };
 
-  return onDebouce;
+  return onDebounce;
 };
 
 const fetchAgeByName = (name) => {

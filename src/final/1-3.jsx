@@ -27,7 +27,7 @@ const App = () => {
         />
       </div>
       <Name name={name} isNameReversed={isNameReversed} />
-      <ul style={{ textAlign: 'left' }}>
+      <ul className="history">
         {nameHistory.map((name, index) => (
           <li key={index}>{name}</li>
         ))}
