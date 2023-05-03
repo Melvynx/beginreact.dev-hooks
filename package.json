@@ -9,25 +9,29 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@heroicons/react": "^1.0.6",
+    "@heroicons/react": "^2.0.17",
     "clsx": "^1.2.1",
-    "jotai": "^1.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.34.0",
-    "react-router-dom": "^6.3.0",
-    "styled-components": "^5.3.5"
+    "react-hook-form": "^7.43.9",
+    "react-router-dom": "^6.11.0",
+    "styled-components": "^5.3.10",
+    "vite-plugin-markdown": "^2.1.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.18.6",
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6",
-    "@vitejs/plugin-react": "^2.0.0",
-    "eslint": "^8.23.1",
-    "eslint-plugin-react": "^7.31.8",
-    "eslint-plugin-react-hooks": "^4.7.0-next-7bcc68772-20220811",
-    "prettier": "^2.7.1",
-    "vite": "^3.0.0",
-    "vite-plugin-markdown": "^2.1.0"
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.1",
+    "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.39.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.8.8",
+    "vite": "^4.3.4"
+  },
+  "overrides": {
+    "vite-plugin-markdown": {
+      "vite": "$vite"
+    }
   }
 }
