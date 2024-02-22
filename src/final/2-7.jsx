@@ -47,7 +47,7 @@ const Counter = () => {
   const [isResizeIncrement, setIsResizeIncrement] = useState(false);
 
   useEffect(() => {
-    if (isResizeIncrement) {
+    if (!isResizeIncrement) {
       return;
     }
     const handleResize = () => {
